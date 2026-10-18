@@ -1,34 +1,24 @@
-function el(tag,cls,text){let n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n}
-function art(image,title){let n=el('div','art');if(image){let img=el('img');img.src=image;img.alt=title;n.append(img)}else n.append(el('span','',title.slice(0,2).toUpperCase()));return n}
-function drawCards(type,query=''){const target=document.querySelector('#listing');if(!target)return;target.replaceChildren();let data=db[type].filter(x=>(x.title+' '+x.category+' '+x.description).toLowerCase().includes(query.toLowerCase()));if(!data.length){target.append(el('p','empty','검색 결과가 없습니다.'));return}data.forEach(x=>{let card=el('article','card');card.append(art(x.image,x.title));card.append(el('h3','',x.title),el('p','',x.description),el('span','chip',x.category));target.append(card)})}
-function drawUpdates(){let target=document.querySelector('#updates');if(!target)return;target.replaceChildren();db.updates.forEach(x=>{let row=el('div','log');row.append(el('strong','',x.category),el('div','',x.title+' — '+x.description));target.append(row)})}
-function drawProfile(){let target=document.querySelector('#profile');if(!target)return;target.replaceChildren();let p=db.profile,box=el('div','about'),right=el('div');right.append(el('h2','',p.name),el('p','',p.intro),el('p','muted','PLATFORM · '+p.platform));if(p.contact)right.append(el('p','muted','CONTACT · '+p.contact));box.append(art(p.image,p.name),right);target.append(box)}
-function drawHome(){let target=document.querySelector('#latest');if(!target)return;target.replaceChildren();db.works.slice(0,3).forEach(x=>{let card=el('article','card');card.append(art(x.image,x.title),el('h3','',x.title),el('p','',x.description));target.append(card)})}
-
-async function loadData(){
-  const names=['works','characters','updates','profile'];
-  const responses=await Promise.all(names.map(async name=>{
-    const response=await fetch('./data/'+name+'.json',{cache:'no-store'});
-    if(!response.ok) throw new Error(name+' 파일을 불러오지 못했습니다 ('+response.status+')');
-    return response.json();
-  }));
-  const next=Object.fromEntries(names.map((name,i)=>[name,responses[i]]));
-  if(!Array.isArray(next.works)||!Array.isArray(next.characters)||!Array.isArray(next.updates)||!next.profile||typeof next.profile!=='object') throw new Error('JSON 데이터 구조를 확인해 주세요.');
-  return next;
-}
+function el(tag,cls,text){const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n}
+function art(image,title){const n=el('div','art');if(image){const img=el('img');img.src=image;img.alt=title;n.append(img)}else n.append(el('span','',String(title||'?').slice(0,2).toUpperCase()));return n}
+function linkFor(type,x){return 'detail.html?type='+encodeURIComponent(type)+'&id='+encodeURIComponent(x.id)}
+function cardFor(type,x){const card=el('a','card card-link');card.href=linkFor(type,x);card.append(art(x.image,x.title),el('h3','',x.title),el('p','',x.description),el('span','chip',x.category));card.setAttribute('aria-label',x.title+' 상세 보기');return card}
+function drawCards(type,query=''){const target=document.querySelector('#listing');if(!target)return;target.replaceChildren();const data=db[type].filter(x=>([x.title,x.category,x.description].join(' ')).toLowerCase().includes(query.toLowerCase()));if(!data.length){target.append(el('p','empty','검색 결과가 없습니다.'));return}data.forEach(x=>target.append(cardFor(type,x)))}
+function drawUpdates(){const target=document.querySelector('#updates');if(!target)return;target.replaceChildren();db.updates.forEach(x=>{const row=el('div','log');row.append(el('strong','',x.category),el('div','',x.title+' — '+x.description));target.append(row)})}
+function safeExternal(url){try{const u=new URL(url);return ['https:','http:'].includes(u.protocol)?u.href:null}catch{return null}}
+function externalButton(url,label){const safe=safeExternal(url);if(!safe)return null;const a=el('a','detail-button',label);a.href=safe;a.target='_blank';a.rel='noopener noreferrer';return a}
+function drawProfile(){const target=document.querySelector('#profile');if(!target)return;target.replaceChildren();const p=db.profile,box=el('div','about'),right=el('div');right.append(el('h2','',p.name),el('p','detail-paragraph',p.intro),el('p','muted','PLATFORM · '+(p.platform||'—')));if(p.contact)right.append(el('p','muted','CONTACT · '+p.contact));if(p.bio){right.append(el('h3','detail-subtitle','ABOUT'),el('p','detail-paragraph',p.bio))}if(p.links){const b=externalButton(p.links,'활동 페이지 ↗');if(b)right.append(b)}box.append(art(p.image,p.name),right);target.append(box)}
+function drawHome(){const target=document.querySelector('#latest');if(!target)return;target.replaceChildren();db.works.slice(0,3).forEach(x=>target.append(cardFor('works',x)))}
+function textSection(target,heading,value){if(!value)return;target.append(el('h2','detail-subtitle',heading),el('p','detail-paragraph',value))}
+function drawDetail(){const target=document.querySelector('#detail');if(!target)return;target.replaceChildren();const params=new URLSearchParams(location.search),type=params.get('type'),id=params.get('id');if(!['works','characters'].includes(type)||!id){target.append(el('p','empty','잘못된 상세 페이지 주소입니다.'));return}const item=db[type].find(x=>String(x.id)===id);if(!item){target.append(el('p','empty','해당 항목을 찾을 수 없습니다.'));return}document.title=item.title+' — WORLD.EXE';const back=el('a','detail-back','← '+(type==='works'?'작품 목록':'캐릭터 목록'));back.href=type+'.html';target.append(back);const header=el('div','detail-hero'),info=el('div','detail-info');info.append(el('span','chip',item.category||''),el('h1','',item.title),el('p','detail-paragraph',item.description||''));header.append(art(item.image,item.title),info);target.append(header);textSection(target,'상세 소개',item.detail);if(type==='works'){
+ const b=externalButton(item.link,'작품 플레이하러 가기 ↗');if(b)target.append(b);
+ const related=db.characters.filter(c=>c.workId===item.id||(!c.workId&&c.category===item.title));if(related.length){target.append(el('h2','detail-subtitle','관련 캐릭터'));const cards=el('div','cards');related.forEach(c=>cards.append(cardFor('characters',c)));target.append(cards)}
+}else{
+ if(item.role)textSection(target,'소속 / 역할',item.role);
+ if(item.personality)textSection(target,'성격',item.personality);
+ if(item.appearance)textSection(target,'외형',item.appearance);
+ const parent=db.works.find(w=>w.id===item.workId||(!item.workId&&w.title===item.category));if(parent){const a=el('a','detail-button','📁 '+parent.title+' 작품 보기 →');a.href=linkFor('works',parent);target.append(a)}
+ const b=externalButton(item.link,'캐릭터 페이지 열기 ↗');if(b)target.append(b)
+}}
+async function loadData(){const names=['works','characters','updates','profile'];const responses=await Promise.all(names.map(async name=>{const response=await fetch('./data/'+name+'.json',{cache:'no-store'});if(!response.ok)throw new Error(name+' HTTP '+response.status);return response.json()}));const next=Object.fromEntries(names.map((name,i)=>[name,responses[i]]));if(!Array.isArray(next.works)||!Array.isArray(next.characters)||!Array.isArray(next.updates)||!next.profile||typeof next.profile!=='object')throw new Error('JSON 데이터 구조 오류');return next}
 let db={works:[],characters:[],updates:[],profile:{}};
-document.addEventListener('DOMContentLoaded',async()=>{
-  const type=document.body.dataset.type;
-  try{
-    db=await loadData();
-    if(type==='works'||type==='characters'){
-      drawCards(type);
-      document.querySelector('#search').addEventListener('input',e=>drawCards(type,e.target.value));
-    }
-    drawUpdates();drawProfile();drawHome();
-  }catch(err){
-    console.error(err);
-    const target=document.querySelector('#listing')||document.querySelector('#latest')||document.querySelector('#updates')||document.querySelector('#profile');
-    if(target)target.append(el('p','empty','데이터를 불러오지 못했습니다. GitHub Pages에서 열었는지, data 폴더와 JSON 파일이 업로드되었는지 확인해 주세요.'));
-  }
-});
+document.addEventListener('DOMContentLoaded',async()=>{const type=document.body.dataset.type;try{db=await loadData();if(type==='works'||type==='characters'){drawCards(type);const search=document.querySelector('#search');if(search)search.addEventListener('input',e=>drawCards(type,e.target.value))}drawUpdates();drawProfile();drawHome();if(type==='detail')drawDetail()}catch(err){console.error(err);const target=document.querySelector('#detail')||document.querySelector('#listing')||document.querySelector('#latest')||document.querySelector('#updates')||document.querySelector('#profile');if(target)target.append(el('p','empty','데이터를 불러오지 못했습니다. 잠시 후 새로고침해 주세요.'))}});

@@ -29,6 +29,12 @@ content:
       - name: image
         label: "대표 이미지"
         type: image
+      - name: detail
+        label: "작품 상세 소개 (줄바꿈 가능)"
+        type: text
+      - name: link
+        label: "작품 플레이 링크 (https://...)"
+        type: string
   - name: characters
     label: "👤 캐릭터 관리"
     type: file
@@ -53,6 +59,24 @@ content:
       - name: image
         label: "캐릭터 이미지"
         type: image
+      - name: workId
+        label: "소속 작품 ID (예: w1)"
+        type: string
+      - name: detail
+        label: "캐릭터 상세 소개"
+        type: text
+      - name: role
+        label: "소속 / 역할"
+        type: string
+      - name: personality
+        label: "성격"
+        type: text
+      - name: appearance
+        label: "외형"
+        type: text
+      - name: link
+        label: "캐릭터 외부 링크 (https://...)"
+        type: string
   - name: updates
     label: "📢 업데이트 기록"
     type: file
@@ -98,3 +122,9 @@ content:
       - name: image
         label: "프로필 이미지"
         type: image
+      - name: bio
+        label: "자세한 자기소개"
+        type: text
+      - name: links
+        label: "활동 페이지 링크 (https://...)"
+        type: string
