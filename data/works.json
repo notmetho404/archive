@@ -23,6 +23,15 @@
     "category": "현대, 느와르",
     "description": "건설사 실장이라더니, 하는 일이 영 수상하다.",
     "image": "/archive/images/01.png",
-    "link": "https://www.plaitoon.com/ko/share/character/dd52d9fc-c8ee-4e23-8464-0d5bb3461c6b"
+    "platforms": [
+      {
+        "name": "플레이툰",
+        "url": "https://www.plaitoon.com/ko/share/character/dd52d9fc-c8ee-4e23-8464-0d5bb3461c6b"
+      },
+      {
+        "name": "크랙",
+        "url": "https://share.crack.wrtn.ai/1j96jz"
+      }
+    ]
   }
 ]
