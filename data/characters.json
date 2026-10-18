@@ -1,0 +1,30 @@
+[
+  {
+    "id": "c1",
+    "title": "카시안 베일",
+    "category": "FALSE HALO",
+    "description": "HOCUS · HERO",
+    "image": ""
+  },
+  {
+    "id": "c2",
+    "title": "발렌틴 모르반",
+    "category": "FALSE HALO",
+    "description": "ATLAS · HERO",
+    "image": ""
+  },
+  {
+    "id": "c3",
+    "title": "루카스 와일더",
+    "category": "FALSE HALO",
+    "description": "ALCHEMY · HERO",
+    "image": ""
+  },
+  {
+    "id": "c4",
+    "title": "신광재",
+    "category": "청림 아카이브",
+    "description": "청림건설 · 실장",
+    "image": ""
+  }
+]
