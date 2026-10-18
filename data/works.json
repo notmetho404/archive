@@ -1,30 +1,26 @@
 [
   {
     "id": "w1",
-    "title": "FALSE HALO",
+    "title": "FALSE HALO-테스트",
     "category": "히어로 × 빌런",
-    "description": "영웅과 악당의 경계가 흐려진 세계.",
-    "image": ""
+    "description": "영웅과 악당의 경계가 흐려진 세계."
   },
   {
     "id": "w2",
     "title": "클리어했으면 나가주세요!",
     "category": "현대 판타지",
-    "description": "공략이 끝난 뒤, 진짜 일이 시작된다.",
-    "image": ""
+    "description": "공략이 끝난 뒤, 진짜 일이 시작된다."
   },
   {
     "id": "w3",
     "title": "PIT WALL",
     "category": "스포츠",
-    "description": "트랙 밖에서 시작되는 또 다른 이야기.",
-    "image": ""
+    "description": "트랙 밖에서 시작되는 또 다른 이야기."
   },
   {
     "id": "w4",
     "title": "청림 아카이브",
     "category": "현대 드라마",
-    "description": "청림의 사람들과 그들의 일상.",
-    "image": ""
+    "description": "청림의 사람들과 그들의 일상."
   }
 ]
