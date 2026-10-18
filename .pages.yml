@@ -32,9 +32,26 @@ content:
       - name: detail
         label: "작품 상세 소개 (줄바꿈 가능)"
         type: text
+      - name: platforms
+        label: "플레이 플랫폼 (여러 개 추가 가능)"
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name}"
+        fields:
+          - name: name
+            label: "플랫폼 이름 / 버튼 문구"
+            type: string
+            required: true
+          - name: url
+            label: "플랫폼 링크 (https://...)"
+            type: string
+            required: true
       - name: link
-        label: "작품 플레이 링크 (https://...)"
+        label: "기존 작품 플레이 링크 (이전 데이터 호환용)"
         type: string
+        description: "예전에 등록한 단일 링크를 유지합니다. 새 링크는 위 플레이 플랫폼에 추가하세요."
   - name: characters
     label: "👤 캐릭터 관리"
     type: file

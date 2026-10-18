@@ -11,7 +11,13 @@ function drawProfile(){const target=document.querySelector('#profile');if(!targe
 function drawHome(){const target=document.querySelector('#latest');if(!target)return;target.replaceChildren();db.works.slice(0,3).forEach(x=>target.append(cardFor('works',x)))}
 function textSection(target,heading,value){if(!value)return;target.append(el('h2','detail-subtitle',heading),el('p','detail-paragraph',value))}
 function drawDetail(){const target=document.querySelector('#detail');if(!target)return;target.replaceChildren();const params=new URLSearchParams(location.search),type=params.get('type'),id=params.get('id');if(!['works','characters'].includes(type)||!id){target.append(el('p','empty','잘못된 상세 페이지 주소입니다.'));return}const item=db[type].find(x=>String(x.id)===id);if(!item){target.append(el('p','empty','해당 항목을 찾을 수 없습니다.'));return}document.title=item.title+' — WORLD.EXE';const back=el('a','detail-back','← '+(type==='works'?'작품 목록':'캐릭터 목록'));back.href=type+'.html';target.append(back);const header=el('div','detail-hero'),info=el('div','detail-info');info.append(chips(item.category),el('h1','',item.title),el('p','detail-paragraph',item.description||''));header.append(art(item.image,item.title),info);target.append(header);textSection(target,'상세 소개',item.detail);if(type==='works'){
- const b=externalButton(item.link,'작품 플레이하러 가기 ↗');if(b)target.append(b);
+ const platformLinks=Array.isArray(item.platforms)?item.platforms:[];
+ const validPlatforms=platformLinks.map(p=>({name:String(p?.name||'').trim(),url:p?.url})).filter(p=>p.name&&safeExternal(p.url));
+ const platformsBox=el('div','platform-links');
+ if(validPlatforms.length){target.append(el('h2','detail-subtitle','PLATFORMS'));validPlatforms.forEach(p=>{const b=externalButton(p.url,p.name+' ↗');if(b)platformsBox.append(b)})}
+ const legacy=safeExternal(item.link);
+ if(legacy&&!validPlatforms.some(p=>safeExternal(p.url)===legacy)){const b=externalButton(legacy,'기존 플레이 링크 ↗');if(b)platformsBox.append(b)}
+ if(platformsBox.childElementCount)target.append(platformsBox);
  const related=db.characters.filter(c=>c.workId===item.id||(!c.workId&&c.category===item.title));if(related.length){target.append(el('h2','detail-subtitle','관련 캐릭터'));const cards=el('div','cards');related.forEach(c=>cards.append(cardFor('characters',c)));target.append(cards)}
 }else{
  if(item.role)textSection(target,'소속 / 역할',item.role);
