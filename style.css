@@ -2,18 +2,10 @@
 /* Detail pages */
 .card-link{display:block;transition:transform .15s,box-shadow .15s;cursor:pointer}.card-link:hover,.card-link:focus-visible{transform:translateY(-4px);box-shadow:5px 7px 0 #34395a;outline-offset:3px}.detail-back{display:inline-block;margin-bottom:24px;color:#545b8c;font-weight:700}.detail-back:hover{text-decoration:underline}.detail-hero{display:grid;grid-template-columns:minmax(220px,42%) 1fr;gap:28px;align-items:start;margin-bottom:30px}.detail-hero .art{height:auto;aspect-ratio:4/3}.detail-info h1{overflow-wrap:anywhere;margin:15px 0}.detail-paragraph{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.9}.detail-subtitle{font-size:19px;border-bottom:1px dashed #a5a8bb;padding-bottom:8px;margin:30px 0 12px}.detail-button{display:inline-block;border:2px solid #34395a;background:#f1ecff;padding:11px 16px;margin:15px 12px 10px 0;font-weight:700;box-shadow:3px 3px 0 #34395a}.detail-button:hover{background:#e4dcff}@media(max-width:650px){.detail-hero{grid-template-columns:1fr}.detail-hero .art{max-height:350px}}
 
+/* 쉼표로 입력한 분류를 각각의 태그로 표시 */
+.tag-list{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:8px}
+.tag-list .chip{display:inline-block;margin:0}
 
-/* WORLD.EXE portrait cover cards — 3:4 book-cover ratio */
-.cards{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;gap:20px}
-.cards .card{display:flex;flex-direction:column;min-width:0;height:100%;padding:10px;overflow:hidden}
-.cards .card .art{width:100%;height:auto;aspect-ratio:3 / 4;overflow:hidden;flex-shrink:0}
-.cards .card .art img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
-.cards .card h3{margin:10px 0 3px;overflow-wrap:anywhere}
-.cards .card p{margin:3px 0 10px;overflow-wrap:anywhere}
-.cards .card .chip{align-self:flex-start;margin-top:auto}
-/* Detail cover: preserve portrait artwork rather than cropping it wide */
-.detail-hero{grid-template-columns:minmax(180px,34%) 1fr}
-.detail-hero .art{aspect-ratio:3 / 4;height:auto}
-.detail-hero .art img{object-position:center top}
-@media(max-width:800px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:550px){.cards{grid-template-columns:1fr}}
+/* 세로형 카드: 작품 및 캐릭터 공통 */
+.cards .card .art{aspect-ratio:3/4;height:auto}
+.cards .card .art img{width:100%;height:100%;object-fit:cover}

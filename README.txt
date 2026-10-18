@@ -1,4 +1,4 @@
-WORLD.EXE 세로 표지 카드 업데이트
-GitHub archive 저장소 루트의 style.css 파일만 교체하세요.
-기존 app.js, .pages.yml, data 폴더는 건드리지 마세요.
-표지 비율 3:4, 이미지 중앙 위 기준으로 잘라서 표시합니다.
+WORLD.EXE 쉼표 태그 분리 + 작품/캐릭터 3:4 카드 유지
+GitHub archive 루트에 app.js, style.css 두 파일을 업로드하여 교체하세요.
+기존 data 폴더와 .pages.yml은 수정하지 않습니다.
+Pages CMS의 장르/분류에 히어로, 빌런, 이능력 처럼 입력하면 각각 태그로 표시됩니다.
