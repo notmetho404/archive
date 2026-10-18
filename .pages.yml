@@ -1,0 +1,100 @@
+media:
+  input: images
+  output: /archive/images
+  rename: safe
+  categories: [image]
+
+content:
+  - name: works
+    label: "📁 작품 관리"
+    type: file
+    path: data/works.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: "작품 ID (고유값)"
+        type: string
+        required: true
+      - name: title
+        label: "작품 제목"
+        type: string
+        required: true
+      - name: category
+        label: "장르 / 분류"
+        type: string
+      - name: description
+        label: "작품 소개"
+        type: text
+      - name: image
+        label: "대표 이미지"
+        type: image
+  - name: characters
+    label: "👤 캐릭터 관리"
+    type: file
+    path: data/characters.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: "캐릭터 ID (고유값)"
+        type: string
+        required: true
+      - name: title
+        label: "캐릭터 이름"
+        type: string
+        required: true
+      - name: category
+        label: "소속 작품"
+        type: string
+      - name: description
+        label: "캐릭터 소개"
+        type: text
+      - name: image
+        label: "캐릭터 이미지"
+        type: image
+  - name: updates
+    label: "📢 업데이트 기록"
+    type: file
+    path: data/updates.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: "기록 ID (고유값)"
+        type: string
+        required: true
+      - name: title
+        label: "업데이트 제목"
+        type: string
+        required: true
+      - name: category
+        label: "날짜 (YYYY-MM-DD)"
+        type: string
+      - name: description
+        label: "업데이트 내용"
+        type: text
+      - name: image
+        label: "이미지 (선택)"
+        type: image
+  - name: profile
+    label: "💌 프로필"
+    type: file
+    path: data/profile.json
+    format: json
+    fields:
+      - name: name
+        label: "활동명"
+        type: string
+      - name: intro
+        label: "소개"
+        type: text
+      - name: platform
+        label: "활동 플랫폼"
+        type: string
+      - name: contact
+        label: "연락처 / 링크"
+        type: string
+      - name: image
+        label: "프로필 이미지"
+        type: image
