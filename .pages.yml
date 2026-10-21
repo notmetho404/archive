@@ -26,6 +26,9 @@ content:
       - name: description
         label: "작품 소개"
         type: text
+      - name: releaseDate
+        label: "출시일 (예: 2026.09.12)"
+        type: string
       - name: image
         label: "대표 이미지"
         type: image
