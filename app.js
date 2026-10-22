@@ -34,7 +34,7 @@ function drawUpdates(){
  if(!items.length){target.append(el('li','empty','아직 등록된 업데이트가 없어요.'));return}
  items.forEach((x,i)=>{
   const li=el('li','tl-item'),date=el('time','tl-date',fmtDate(x.category));if(/^\d{4}-\d{2}-\d{2}$/.test(String(x.category||'')))date.dateTime=x.category;
-  const body=el('div','tl-body'),head=el('div','tl-head');head.append(el('h2','',x.title));if(i===0)head.append(el('span','chip','최신'));body.append(head);
+  const body=el('div','tl-body'),head=el('div','tl-head');const tm=!x.tag&&String(x.title||'').match(/^\[([^\]]+)\]\s*(.*)$/),tag=x.tag||(tm?tm[1]:''),ttl=tm?tm[2]:x.title;if(tag){const t=el('span','tl-tag',tag);t.dataset.tag=tag;head.append(t)}head.append(el('h2','',ttl));if(i===0)head.append(el('span','chip','최신'));body.append(head);
   if(x.description)body.append(el('p','',x.description));
   if(x.image){const img=el('img','tl-img');img.src=x.image;img.alt=x.title;img.loading='lazy';body.append(img)}
   li.append(date,body);target.append(li)

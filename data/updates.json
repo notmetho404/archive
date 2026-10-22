@@ -1,20 +1,24 @@
 {
   "items": [
     {
-      "title": "[신작] FALSE HALO：일그러진 영웅",
+      "title": "FALSE HALO：일그러진 영웅",
+      "tag": "신작",
       "category": "2026-10-21"
     },
     {
       "title": "아카이브 오픈",
+      "tag": "공지",
       "category": "2026-10-18",
       "description": "창작 아카이브를 시작했습니다."
     },
     {
-      "title": "[신작] 피트 월 : NORTHSTAR",
+      "title": "피트 월 : NORTHSTAR",
+      "tag": "신작",
       "category": "2026-10-04"
     },
     {
-      "title": "[신작] 11월에는 신광재를 조심하세요",
+      "title": "11월에는 신광재를 조심하세요",
+      "tag": "신작",
       "category": "2026-09-12"
     }
   ]
