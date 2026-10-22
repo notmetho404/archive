@@ -1,5 +1,62 @@
 [
   {
+    "id": "c14",
+    "title": "에레보스",
+    "category": "FALSE HALO : 일그러진 영웅",
+    "description": "페르세아스 마브리디스",
+    "workId": "w3"
+  },
+  {
+    "id": "c13",
+    "title": "데레브",
+    "category": "FALSE HALO : 일그러진 영웅",
+    "description": "실뱅 드로네",
+    "workId": "w3"
+  },
+  {
+    "id": "c12",
+    "title": "레조낭스",
+    "category": "FALSE HALO : 일그러진 영웅",
+    "description": "뤼시앵 보트랭",
+    "workId": "w3"
+  },
+  {
+    "id": "c11",
+    "title": "루인",
+    "category": "FALSE HALO : 일그러진 영웅",
+    "description": "량웨이천",
+    "workId": "w3"
+  },
+  {
+    "id": "c10",
+    "title": "아르카디아",
+    "category": "FALSE HALO : 일그러진 영웅",
+    "description": "량웨이호",
+    "workId": "w3"
+  },
+  {
+    "id": "c9",
+    "title": "알케미",
+    "category": "FALSE HALO : 일그러진 영웅",
+    "description": "루카스 와일더",
+    "workId": "w3"
+  },
+  {
+    "id": "c8",
+    "title": "아틀라스",
+    "category": "FALSE HALO : 일그러진 영웅",
+    "description": "발렌틴 모르반",
+    "workId": "w3"
+  },
+  {
+    "id": "c7",
+    "title": "호커스",
+    "image": "/archive/images/3-1.png",
+    "category": "FALSE HALO : 일그러진 영웅",
+    "description": "카시안 베일",
+    "workId": "w3"
+  },
+  {
     "id": "c2",
     "title": "엘리아스 뉘스트룀",
     "image": "/archive/images/1.png",
