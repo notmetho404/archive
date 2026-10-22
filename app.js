@@ -30,7 +30,6 @@ function drawDetail(){const target=document.querySelector('#detail');if(!target)
  const related=db.characters.filter(c=>sameId(c.workId,item.id)||(!c.workId&&c.category===item.title));
  if(related.length){info.append(el('h2','detail-subtitle','등장 캐릭터'));const charBox=el('div','platform-links character-links');related.forEach(c=>{const a=el('a','detail-button character-button',c.title+' →');a.href=linkFor('characters',c);charBox.append(a)});info.append(charBox)}
  textSection(info,'상세 소개',item.detail);
- if(related.length){target.append(el('h2','detail-subtitle','관련 캐릭터'));const cards=el('div','cards');related.forEach(c=>cards.append(cardFor('characters',c)));target.append(cards)}
 }else{
  if(item.role)textSection(target,'소속 / 역할',item.role);
  if(item.personality)textSection(target,'성격',item.personality);
