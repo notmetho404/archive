@@ -20,8 +20,12 @@ content:
         label: "작품 제목"
         type: string
         required: true
+        description: "목록 맨 위에 있는 작품이 사이트에 가장 먼저 나와요. 최신 작품을 맨 위에 두세요."
+      - name: image
+        label: "대표 이미지 (832x1216)"
+        type: image
       - name: category
-        label: "장르 / 분류"
+        label: "장르 / 분류 (쉼표로 여러 개)"
         type: string
       - name: description
         label: "작품 소개"
@@ -29,21 +33,6 @@ content:
       - name: releaseDate
         label: "출시일 (예: 2026.09.12)"
         type: string
-      - name: theme
-        label: "상세 페이지 테마 (작품·소속 캐릭터 상세에 적용)"
-        type: select
-        options:
-          values:
-            - value: default
-              label: "기본 (보라)"
-            - value: noir
-              label: "느와르 (검정 + 레드)"
-      - name: image
-        label: "대표 이미지"
-        type: image
-      - name: detail
-        label: "작품 상세 소개 (줄바꿈 가능)"
-        type: text
       - name: platforms
         label: "플레이 플랫폼 (여러 개 추가 가능)"
         type: object
@@ -60,6 +49,18 @@ content:
             label: "플랫폼 링크 (https://...)"
             type: string
             required: true
+      - name: detail
+        label: "작품 상세 소개 (줄바꿈 가능)"
+        type: text
+      - name: theme
+        label: "상세 페이지 테마 (작품·소속 캐릭터 상세에 적용)"
+        type: select
+        options:
+          values:
+            - value: default
+              label: "기본 (보라)"
+            - value: noir
+              label: "느와르 (검정 + 레드)"
       - name: link
         label: "기존 작품 플레이 링크 (이전 데이터 호환용)"
         type: string
@@ -79,15 +80,16 @@ content:
         label: "캐릭터 이름"
         type: string
         required: true
+        description: "목록 맨 위에 있는 캐릭터가 사이트에 가장 먼저 나와요."
+      - name: image
+        label: "캐릭터 이미지 (832x1216)"
+        type: image
       - name: category
         label: "소속 작품"
         type: string
       - name: description
         label: "캐릭터 소개"
         type: text
-      - name: image
-        label: "캐릭터 이미지"
-        type: image
       - name: workId
         label: "소속 작품 ID (예: w1)"
         type: string
@@ -117,13 +119,14 @@ content:
         label: "기록 ID (고유값)"
         type: string
         required: true
+      - name: category
+        label: "날짜 (YYYY-MM-DD)"
+        type: string
+        description: "목록 맨 위(가장 최근) 기록에 '최신' 표시가 붙어요."
       - name: title
         label: "업데이트 제목"
         type: string
         required: true
-      - name: category
-        label: "날짜 (YYYY-MM-DD)"
-        type: string
       - name: description
         label: "업데이트 내용"
         type: text
@@ -136,6 +139,9 @@ content:
     path: data/profile.json
     format: json
     fields:
+      - name: image
+        label: "프로필 이미지"
+        type: image
       - name: name
         label: "활동명"
         type: string
@@ -148,9 +154,6 @@ content:
       - name: contact
         label: "연락처 / 링크"
         type: string
-      - name: image
-        label: "프로필 이미지"
-        type: image
       - name: bio
         label: "자세한 자기소개"
         type: text

@@ -17,7 +17,7 @@ function drawCards(type,query){
  const target=document.querySelector('#listing');if(!target)return;
  if(query!==undefined)listState.query=query;
  target.replaceChildren();
- const q=listState.query.toLowerCase(),all=[...db[type]].reverse();
+ const q=listState.query.toLowerCase(),all=[...db[type]];
  const data=all.filter(x=>(!listState.tag||tagsOf(x).includes(listState.tag))&&([x.title,x.category,x.description].join(' ')).toLowerCase().includes(q));
  const unit=type==='works'?'개':'명',count=document.querySelector('#count'),status=document.querySelector('#list-status');
  if(count)count.textContent=all.length;
@@ -28,7 +28,7 @@ function drawCards(type,query){
 function fmtDate(v){const t=String(v||'');return /^\d{4}-\d{2}-\d{2}$/.test(t)?t.replace(/-/g,'.'):t}
 function drawUpdates(){
  const target=document.querySelector('#updates');if(!target)return;target.replaceChildren();
- const items=[...db.updates].sort((a,b)=>String(b.category||'').localeCompare(String(a.category||'')));
+ const items=[...db.updates];
  const status=document.querySelector('#list-status');if(status)status.textContent='기록 '+items.length+'건';
  if(!items.length){target.append(el('li','empty','아직 등록된 업데이트가 없어요.'));return}
  items.forEach((x,i)=>{
@@ -57,7 +57,7 @@ function drawProfile(){
 }
 function drawHome(){
  const target=document.querySelector('#latest');if(!target)return;target.replaceChildren();
- const works=[...db.works].reverse();
+ const works=[...db.works];
  const setText=(sel,text)=>{const n=document.querySelector(sel);if(n)n.textContent=text};
  setText('[data-count="works"]',db.works.length+'개의 작품');
  setText('[data-count="characters"]',db.characters.length+'명');
