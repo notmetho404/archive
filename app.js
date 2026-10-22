@@ -5,11 +5,56 @@ function chips(value){const wrap=el('div','tag-list');const tags=(Array.isArray(
 function themeFor(type,x){const w=type==='works'?x:db.works.find(w=>sameId(w.id,x.workId)||(!x.workId&&w.title===x.category));return w&&w.theme&&w.theme!=='default'?String(w.theme):''}
 function winButtons(){const b=el('span','win-btns');['─','□','×'].forEach(s=>b.append(el('span','win-btn',s)));return b}
 function cardFor(type,x){const card=el('a','card card-link');const th=themeFor(type,x);if(th)card.dataset.theme=th;card.href=linkFor(type,x);card.append(art(x.image,x.title),el('h3','',x.title),el('p','',x.description),chips(x.category));card.setAttribute('aria-label',x.title+' 상세 보기');return card}
-function drawCards(type,query=''){const target=document.querySelector('#listing');if(!target)return;target.replaceChildren();const data=db[type].filter(x=>([x.title,x.category,x.description].join(' ')).toLowerCase().includes(query.toLowerCase()));if(!data.length){target.append(el('p','empty','검색 결과가 없습니다.'));return}data.forEach(x=>target.append(cardFor(type,x)))}
-function drawUpdates(){const target=document.querySelector('#updates');if(!target)return;target.replaceChildren();db.updates.forEach(x=>{const row=el('div','log');row.append(el('strong','',x.category),el('div','',x.title+' — '+x.description));target.append(row)})}
+const listState={query:'',tag:''};
+function tagsOf(x){return (Array.isArray(x.category)?x.category.flatMap(v=>String(v).split(',')):String(x.category||'').split(',')).map(v=>v.trim()).filter(Boolean)}
+function drawFilters(type){
+ const box=document.querySelector('#filters');if(!box)return;box.replaceChildren();
+ const tags=[...new Set(db[type].flatMap(tagsOf))];if(tags.length<2){box.hidden=true;return}
+ ['',...tags].forEach(t=>{const b=el('button','filter',t||'전체');b.type='button';b.dataset.tag=t;b.setAttribute('aria-pressed',String(listState.tag===t));
+  b.addEventListener('click',()=>{listState.tag=t;box.querySelectorAll('.filter').forEach(n=>n.setAttribute('aria-pressed',String(n.dataset.tag===t)));drawCards(type)});box.append(b)})
+}
+function drawCards(type,query){
+ const target=document.querySelector('#listing');if(!target)return;
+ if(query!==undefined)listState.query=query;
+ target.replaceChildren();
+ const q=listState.query.toLowerCase(),all=[...db[type]].reverse();
+ const data=all.filter(x=>(!listState.tag||tagsOf(x).includes(listState.tag))&&([x.title,x.category,x.description].join(' ')).toLowerCase().includes(q));
+ const unit=type==='works'?'개':'명',count=document.querySelector('#count'),status=document.querySelector('#list-status');
+ if(count)count.textContent=all.length;
+ if(status)status.textContent=data.length===all.length?'전체 '+all.length+unit:'전체 '+all.length+unit+' 중 '+data.length+unit+' 표시';
+ if(!data.length){target.append(el('p','empty','조건에 맞는 항목이 없어요. 검색어를 지우거나 "전체"를 눌러 보세요.'));return}
+ data.forEach(x=>target.append(cardFor(type,x)))
+}
+function fmtDate(v){const t=String(v||'');return /^\d{4}-\d{2}-\d{2}$/.test(t)?t.replace(/-/g,'.'):t}
+function drawUpdates(){
+ const target=document.querySelector('#updates');if(!target)return;target.replaceChildren();
+ const items=[...db.updates].sort((a,b)=>String(b.category||'').localeCompare(String(a.category||'')));
+ const status=document.querySelector('#list-status');if(status)status.textContent='기록 '+items.length+'건';
+ if(!items.length){target.append(el('li','empty','아직 등록된 업데이트가 없어요.'));return}
+ items.forEach((x,i)=>{
+  const li=el('li','tl-item'),date=el('time','tl-date',fmtDate(x.category));if(/^\d{4}-\d{2}-\d{2}$/.test(String(x.category||'')))date.dateTime=x.category;
+  const body=el('div','tl-body'),head=el('div','tl-head');head.append(el('h2','',x.title));if(i===0)head.append(el('span','chip','최신'));body.append(head);
+  if(x.description)body.append(el('p','',x.description));
+  if(x.image){const img=el('img','tl-img');img.src=x.image;img.alt=x.title;img.loading='lazy';body.append(img)}
+  li.append(date,body);target.append(li)
+ })
+}
 function safeExternal(url){try{const u=new URL(url);return ['https:','http:'].includes(u.protocol)?u.href:null}catch{return null}}
 function externalButton(url,label){const safe=safeExternal(url);if(!safe)return null;const a=el('a','detail-button',label);a.href=safe;a.target='_blank';a.rel='noopener noreferrer';return a}
-function drawProfile(){const target=document.querySelector('#profile');if(!target)return;target.replaceChildren();const p=db.profile,box=el('div','about'),right=el('div');right.append(el('h2','',p.name),el('p','detail-paragraph',p.intro),el('p','muted','PLATFORM · '+(p.platform||'—')));if(p.contact)right.append(el('p','muted','CONTACT · '+p.contact));if(p.bio){right.append(el('h3','detail-subtitle','ABOUT'),el('p','detail-paragraph',p.bio))}if(p.links){const b=externalButton(p.links,'활동 페이지 ↗');if(b)right.append(b)}box.append(art(p.image,p.name),right);target.append(box)}
+function drawProfile(){
+ const target=document.querySelector('#profile');if(!target)return;target.replaceChildren();
+ const p=db.profile||{},wrap=el('div','profile-wrap'),card=el('div','id-card'),photo=el('div','id-photo');
+ if(p.image){const img=el('img');img.src=p.image;img.alt=p.name||'프로필';photo.append(img)}else photo.append(el('span','','✳'));
+ card.append(el('span','id-slot'),photo,el('strong','id-name',p.name||'—'),el('span','id-stripe'));
+ const info=el('div','profile-info');if(p.intro)info.append(el('p','profile-lead',p.intro));
+ const meta=el('dl','detail-meta profile-meta');
+ [['활동 플랫폼',p.platform],['작품',db.works.length+'개'],['캐릭터',db.characters.length+'명'],['연락처',p.contact]].forEach(([k,v])=>{if(!v)return;const r=el('div','detail-meta-row');r.append(el('dt','',k),el('dd','',String(v)));meta.append(r)});
+ info.append(meta);
+ textSection(info,'자세한 소개',p.bio);
+ if(p.links){const b=externalButton(p.links,'활동 페이지 ↗');if(b){const row=el('div','platform-links');row.append(b);info.append(row)}}
+ wrap.append(card,info);target.append(wrap);
+ const status=document.querySelector('#list-status');if(status)status.textContent='작품 '+db.works.length+'개 · 캐릭터 '+db.characters.length+'명';
+}
 function drawHome(){
  const target=document.querySelector('#latest');if(!target)return;target.replaceChildren();
  const works=[...db.works].reverse();
@@ -67,4 +112,4 @@ function drawDetail(){const target=document.querySelector('#detail');if(!target)
 }}
 async function loadData(){const names=['works','characters','updates','profile'];const responses=await Promise.all(names.map(async name=>{const response=await fetch('./data/'+name+'.json',{cache:'no-store'});if(!response.ok)throw new Error(name+' HTTP '+response.status);return response.json()}));const next=Object.fromEntries(names.map((name,i)=>[name,responses[i]]));if(!Array.isArray(next.works)||!Array.isArray(next.characters)||!Array.isArray(next.updates)||!next.profile||typeof next.profile!=='object')throw new Error('JSON 데이터 구조 오류');return next}
 let db={works:[],characters:[],updates:[],profile:{}};
-document.addEventListener('DOMContentLoaded',async()=>{const type=document.body.dataset.type;try{db=await loadData();if(type==='works'||type==='characters'){drawCards(type);const search=document.querySelector('#search');if(search)search.addEventListener('input',e=>drawCards(type,e.target.value))}drawUpdates();drawProfile();drawHome();if(type==='detail')drawDetail()}catch(err){console.error(err);const target=document.querySelector('#detail')||document.querySelector('#listing')||document.querySelector('#latest')||document.querySelector('#updates')||document.querySelector('#profile');if(target)target.append(el('p','empty','데이터를 불러오지 못했습니다. 잠시 후 새로고침해 주세요.'))}});
+document.addEventListener('DOMContentLoaded',async()=>{const type=document.body.dataset.type;try{db=await loadData();if(type==='works'||type==='characters'){drawFilters(type);drawCards(type);const search=document.querySelector('#search');if(search)search.addEventListener('input',e=>drawCards(type,e.target.value))}drawUpdates();drawProfile();drawHome();if(type==='detail')drawDetail()}catch(err){console.error(err);const target=document.querySelector('#detail')||document.querySelector('#listing')||document.querySelector('#latest')||document.querySelector('#updates')||document.querySelector('#profile');if(target)target.append(el('p','empty','데이터를 불러오지 못했습니다. 잠시 후 새로고침해 주세요.'))}});
