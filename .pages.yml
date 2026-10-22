@@ -29,6 +29,15 @@ content:
       - name: releaseDate
         label: "출시일 (예: 2026.09.12)"
         type: string
+      - name: theme
+        label: "상세 페이지 테마 (작품·소속 캐릭터 상세에 적용)"
+        type: select
+        options:
+          values:
+            - value: default
+              label: "기본 (보라)"
+            - value: noir
+              label: "느와르 (검정 + 레드)"
       - name: image
         label: "대표 이미지"
         type: image
