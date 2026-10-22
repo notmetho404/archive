@@ -1,28 +1,27 @@
 [
   {
     "id": "c4",
-    "title": "신광재",
-    "category": "11월에는 신광재를 조심하세요",
-    "description": "청림건설 · 실장",
-    "image": "/archive/images/shinc.png",
-    "workId": "W4"
-  },
-  {
-    "id": "c3",
     "title": "루카스 와일더",
     "category": "FALSE HALO",
     "description": "ALCHEMY · HERO"
   },
   {
-    "id": "c2",
+    "id": "c3",
     "title": "발렌틴 모르반",
     "category": "FALSE HALO",
     "description": "ATLAS · HERO"
   },
   {
+    "id": "c2",
+    "title": "엘리아스 뉘스트룀",
+    "category": "피트 월 : NORTHSTAR"
+  },
+  {
     "id": "c1",
-    "title": "카시안 베일",
-    "category": "FALSE HALO",
-    "description": "HOCUS · HERO"
+    "title": "신광재",
+    "image": "/archive/images/shinc.png",
+    "category": "11월에는 신광재를 조심하세요",
+    "description": "청림건설 · 실장",
+    "workId": "W1"
   }
 ]
