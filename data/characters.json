@@ -1,20 +1,38 @@
 [
   {
-    "id": "c4",
-    "title": "루카스 와일더",
-    "category": "FALSE HALO",
-    "description": "ALCHEMY · HERO"
+    "id": "c2",
+    "title": "엘리아스 뉘스트룀",
+    "image": "/archive/images/1.png",
+    "category": "피트 월 : NORTHSTAR",
+    "workId": "w2"
   },
   {
     "id": "c3",
-    "title": "발렌틴 모르반",
-    "category": "FALSE HALO",
-    "description": "ATLAS · HERO"
+    "title": "요나스 켈러",
+    "image": "/archive/images/2.png",
+    "category": "피트 월 : NORTHSTAR",
+    "workId": "w2"
   },
   {
-    "id": "c2",
-    "title": "엘리아스 뉘스트룀",
-    "category": "피트 월 : NORTHSTAR"
+    "id": "c4",
+    "title": "레오 마르샹",
+    "image": "/archive/images/3.png",
+    "category": "피트 월 : NORTHSTAR",
+    "workId": "w2"
+  },
+  {
+    "id": "c5",
+    "title": "핀 오코너",
+    "image": "/archive/images/4.png",
+    "category": "피트 월 : NORTHSTAR",
+    "workId": "w2"
+  },
+  {
+    "id": "c6",
+    "title": "다비데 콘티",
+    "image": "/archive/images/5.png",
+    "category": "피트 월 : NORTHSTAR",
+    "workId": "w2"
   },
   {
     "id": "c1",
