@@ -10,129 +10,137 @@ content:
     type: file
     path: data/works.json
     format: json
-    list: true
     fields:
-      - name: id
-        label: "작품 ID (고유값)"
-        type: string
-        required: true
-      - name: title
-        label: "작품 제목"
-        type: string
-        required: true
-        description: "목록 맨 위에 있는 작품이 사이트에 가장 먼저 나와요. 최신 작품을 맨 위에 두세요."
-      - name: image
-        label: "대표 이미지 (832x1216)"
-        type: image
-      - name: category
-        label: "장르 / 분류 (쉼표로 여러 개)"
-        type: string
-      - name: description
-        label: "작품 소개"
-        type: text
-      - name: releaseDate
-        label: "출시일 (예: 2026.09.12)"
-        type: string
-      - name: platforms
-        label: "플레이 플랫폼 (여러 개 추가 가능)"
+      - name: items
+        label: "작품 목록 (맨 위 작품이 사이트에 가장 먼저 나와요)"
         type: object
         list:
           collapsible:
             collapsed: true
-            summary: "{name}"
+            summary: "{title}"
         fields:
-          - name: name
-            label: "플랫폼 이름 / 버튼 문구"
+          - name: title
+            label: "작품 제목"
             type: string
             required: true
-          - name: url
-            label: "플랫폼 링크 (https://...)"
+          - name: image
+            label: "대표 이미지 (832x1216)"
+            type: image
+          - name: category
+            label: "장르 / 분류 (쉼표로 여러 개)"
             type: string
-            required: true
-      - name: detail
-        label: "작품 상세 소개 (줄바꿈 가능)"
-        type: text
-      - name: theme
-        label: "상세 페이지 테마 (작품·소속 캐릭터 상세에 적용)"
-        type: select
-        options:
-          values:
-            - value: default
-              label: "기본 (보라)"
-            - value: noir
-              label: "느와르 (검정 + 레드)"
-      - name: link
-        label: "기존 작품 플레이 링크 (이전 데이터 호환용)"
-        type: string
-        description: "예전에 등록한 단일 링크를 유지합니다. 새 링크는 위 플레이 플랫폼에 추가하세요."
+          - name: description
+            label: "작품 소개"
+            type: text
+          - name: releaseDate
+            label: "출시일 (예: 2026.09.12)"
+            type: string
+          - name: platforms
+            label: "플레이 플랫폼 (여러 개 추가 가능)"
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{name}"
+            fields:
+              - name: name
+                label: "플랫폼 이름 / 버튼 문구"
+                type: string
+                required: true
+              - name: url
+                label: "플랫폼 링크 (https://...)"
+                type: string
+                required: true
+          - name: detail
+            label: "작품 상세 소개 (줄바꿈 가능)"
+            type: text
+          - name: theme
+            label: "테마 (작품·소속 캐릭터 화면에 적용)"
+            type: select
+            options:
+              values:
+                - value: default
+                  label: "기본 (보라)"
+                - value: noir
+                  label: "느와르 (검정 + 레드)"
+                - value: halo
+                  label: "헤일로 (네이비 + 시안)"
+                - value: northstar
+                  label: "노스스타 (하늘색 + 블루)"
   - name: characters
     label: "👤 캐릭터 관리"
     type: file
     path: data/characters.json
     format: json
-    list: true
     fields:
-      - name: id
-        label: "캐릭터 ID (고유값)"
-        type: string
-        required: true
-      - name: title
-        label: "캐릭터 이름"
-        type: string
-        required: true
-        description: "목록 맨 위에 있는 캐릭터가 사이트에 가장 먼저 나와요."
-      - name: image
-        label: "캐릭터 이미지 (832x1216)"
-        type: image
-      - name: category
-        label: "소속 작품"
-        type: string
-      - name: description
-        label: "캐릭터 소개"
-        type: text
-      - name: workId
-        label: "소속 작품 ID (예: w1)"
-        type: string
-      - name: detail
-        label: "캐릭터 상세 소개"
-        type: text
-      - name: role
-        label: "소속 / 역할"
-        type: string
-      - name: personality
-        label: "성격"
-        type: text
-      - name: appearance
-        label: "외형"
-        type: text
-      - name: link
-        label: "캐릭터 외부 링크 (https://...)"
-        type: string
+      - name: items
+        label: "캐릭터 목록 (맨 위 캐릭터가 사이트에 가장 먼저 나와요)"
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: "캐릭터 이름"
+            type: string
+            required: true
+          - name: category
+            label: "소속 작품"
+            type: select
+            options:
+              values:
+                - value: "FALSE HALO : 일그러진 영웅"
+                  label: "FALSE HALO : 일그러진 영웅"
+                - value: "피트 월 : NORTHSTAR"
+                  label: "피트 월 : NORTHSTAR"
+                - value: "11월에는 신광재를 조심하세요"
+                  label: "11월에는 신광재를 조심하세요"
+          - name: image
+            label: "캐릭터 이미지 (832x1216)"
+            type: image
+          - name: description
+            label: "캐릭터 소개"
+            type: text
+          - name: detail
+            label: "캐릭터 상세 소개"
+            type: text
+          - name: role
+            label: "소속 / 역할"
+            type: string
+          - name: personality
+            label: "성격"
+            type: text
+          - name: appearance
+            label: "외형"
+            type: text
   - name: updates
     label: "📢 업데이트 기록"
     type: file
     path: data/updates.json
     format: json
-    list: true
     fields:
-      - name: id
-        label: "기록 ID (고유값)"
-        type: string
-        required: true
-      - name: category
-        label: "날짜 (YYYY-MM-DD)"
-        type: string
-        description: "목록 맨 위(가장 최근) 기록에 '최신' 표시가 붙어요."
-      - name: title
-        label: "업데이트 제목"
-        type: string
-        required: true
-      - name: description
-        label: "업데이트 내용"
-        type: text
-      - name: image
-        label: "이미지 (선택)"
-        type: image
+      - name: items
+        label: "업데이트 목록 (맨 위가 최신)"
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: "업데이트 제목"
+            type: string
+            required: true
+          - name: category
+            label: "날짜 (YYYY-MM-DD)"
+            type: string
+          - name: description
+            label: "업데이트 내용"
+            type: text
+          - name: image
+            label: "이미지 (선택)"
+            type: image
   - name: profile
     label: "💌 프로필"
     type: file
