@@ -2,13 +2,15 @@
   {
     "id": "c14",
     "title": "에레보스",
+    "image": "/archive/images/3-8.png",
     "category": "FALSE HALO : 일그러진 영웅",
     "description": "페르세아스 마브리디스",
     "workId": "w3"
   },
   {
     "id": "c13",
-    "title": "데레브",
+    "title": "데리브",
+    "image": "/archive/images/3-7.png",
     "category": "FALSE HALO : 일그러진 영웅",
     "description": "실뱅 드로네",
     "workId": "w3"
@@ -16,6 +18,7 @@
   {
     "id": "c12",
     "title": "레조낭스",
+    "image": "/archive/images/3-6.png",
     "category": "FALSE HALO : 일그러진 영웅",
     "description": "뤼시앵 보트랭",
     "workId": "w3"
@@ -23,6 +26,7 @@
   {
     "id": "c11",
     "title": "루인",
+    "image": "/archive/images/3-5.png",
     "category": "FALSE HALO : 일그러진 영웅",
     "description": "량웨이천",
     "workId": "w3"
@@ -30,6 +34,7 @@
   {
     "id": "c10",
     "title": "아르카디아",
+    "image": "/archive/images/3-4.png",
     "category": "FALSE HALO : 일그러진 영웅",
     "description": "량웨이호",
     "workId": "w3"
@@ -37,6 +42,7 @@
   {
     "id": "c9",
     "title": "알케미",
+    "image": "/archive/images/3-3.png",
     "category": "FALSE HALO : 일그러진 영웅",
     "description": "루카스 와일더",
     "workId": "w3"
@@ -44,6 +50,7 @@
   {
     "id": "c8",
     "title": "아틀라스",
+    "image": "/archive/images/3-9.png",
     "category": "FALSE HALO : 일그러진 영웅",
     "description": "발렌틴 모르반",
     "workId": "w3"
