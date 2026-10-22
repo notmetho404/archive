@@ -1,4 +1,4 @@
-WORLD.EXE 플랫폼 다중 링크 업데이트
+notmetho.exe 플랫폼 다중 링크 업데이트
 
 GitHub 저장소 루트에 .pages.yml, app.js, style.css 세 파일만 업로드하여 교체하세요.
 기존 data/*.json 파일은 절대로 교체하지 마세요.
