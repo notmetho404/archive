@@ -1,4 +1,4 @@
-WORLD.EXE — GitHub Pages + JSON 데이터 버전
+notmetho.exe — GitHub Pages + JSON 데이터 버전
 
 이 버전은 관리자 페이지가 없으며 공개 방문자에게 편집 권한을 제공하지 않습니다.
 콘텐츠는 브라우저 localStorage가 아니라 data/*.json 파일에서 읽습니다.
