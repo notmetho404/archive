@@ -20,6 +20,8 @@ function applyTheme(item,theme){
 function textSection(target,heading,value){if(!value)return;target.append(el('h2','detail-subtitle',heading),el('p','detail-paragraph',value))}
 function drawDetail(){const target=document.querySelector('#detail');if(!target)return;target.replaceChildren();const params=new URLSearchParams(location.search),type=params.get('type'),id=params.get('id');if(!['works','characters'].includes(type)||!id){target.append(el('p','empty','잘못된 상세 페이지 주소입니다.'));return}const item=db[type].find(x=>String(x.id)===id);if(!item){target.append(el('p','empty','해당 항목을 찾을 수 없습니다.'));return}document.title=item.title+' — WORLD.EXE';const back=el('a','detail-back','← '+(type==='works'?'작품 목록':'캐릭터 목록'));back.href=type+'.html';target.append(back);document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')===type+'.html'));const themeWork=type==='works'?item:db.works.find(w=>sameId(w.id,item.workId)||(!item.workId&&w.title===item.category)),theme=themeWork&&themeWork.theme&&themeWork.theme!=='default'?String(themeWork.theme):'';if(theme)applyTheme(item,theme);const header=el('div','detail-hero portrait-hero'),info=el('div','detail-info');info.append(chips(item.category),el('h1','',item.title),el('p','detail-paragraph',item.description||''));header.append(art(item.image,item.title),info);target.append(header);if(type!=='works')textSection(target,'상세 소개',item.detail);if(type==='works'){
  if(item.releaseDate){const meta=el('dl','detail-meta'),row=el('div','detail-meta-row');row.append(el('dt','','출시일'),el('dd','',String(item.releaseDate)));meta.append(row);info.append(meta)}
+ const related=db.characters.filter(c=>sameId(c.workId,item.id)||(!c.workId&&c.category===item.title));
+ if(related.length){info.append(el('h2','detail-subtitle','등장 캐릭터'));const charBox=el('div','platform-links character-links');related.forEach(c=>{const a=el('a','detail-button character-button',c.title+' →');a.href=linkFor('characters',c);charBox.append(a)});info.append(charBox)}
  const platformLinks=Array.isArray(item.platforms)?item.platforms:[];
  const validPlatforms=platformLinks.map(p=>({name:String(p?.name||'').trim(),url:p?.url})).filter(p=>p.name&&safeExternal(p.url));
  const platformsBox=el('div','platform-links');
@@ -27,8 +29,6 @@ function drawDetail(){const target=document.querySelector('#detail');if(!target)
  const legacy=safeExternal(item.link);
  if(legacy&&!validPlatforms.some(p=>safeExternal(p.url)===legacy)){const b=externalButton(legacy,'기존 플레이 링크 ↗');if(b)platformsBox.append(b)}
  if(platformsBox.childElementCount)info.append(platformsBox);
- const related=db.characters.filter(c=>sameId(c.workId,item.id)||(!c.workId&&c.category===item.title));
- if(related.length){info.append(el('h2','detail-subtitle','등장 캐릭터'));const charBox=el('div','platform-links character-links');related.forEach(c=>{const a=el('a','detail-button character-button',c.title+' →');a.href=linkFor('characters',c);charBox.append(a)});info.append(charBox)}
  textSection(info,'상세 소개',item.detail);
 }else{
  if(item.role)textSection(target,'소속 / 역할',item.role);
