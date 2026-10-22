@@ -1,109 +1,83 @@
-[
-  {
-    "id": "c14",
-    "title": "에레보스",
-    "image": "/archive/images/3-8.png",
-    "category": "FALSE HALO : 일그러진 영웅",
-    "description": "페르세아스 마브리디스",
-    "workId": "w3"
-  },
-  {
-    "id": "c13",
-    "title": "데리브",
-    "image": "/archive/images/3-7.png",
-    "category": "FALSE HALO : 일그러진 영웅",
-    "description": "실뱅 드로네",
-    "workId": "w3"
-  },
-  {
-    "id": "c12",
-    "title": "레조낭스",
-    "image": "/archive/images/3-6.png",
-    "category": "FALSE HALO : 일그러진 영웅",
-    "description": "뤼시앵 보트랭",
-    "workId": "w3"
-  },
-  {
-    "id": "c11",
-    "title": "루인",
-    "image": "/archive/images/3-5.png",
-    "category": "FALSE HALO : 일그러진 영웅",
-    "description": "량웨이천",
-    "workId": "w3"
-  },
-  {
-    "id": "c10",
-    "title": "아르카디아",
-    "image": "/archive/images/3-4.png",
-    "category": "FALSE HALO : 일그러진 영웅",
-    "description": "량웨이호",
-    "workId": "w3"
-  },
-  {
-    "id": "c9",
-    "title": "알케미",
-    "image": "/archive/images/3-3.png",
-    "category": "FALSE HALO : 일그러진 영웅",
-    "description": "루카스 와일더",
-    "workId": "w3"
-  },
-  {
-    "id": "c8",
-    "title": "아틀라스",
-    "image": "/archive/images/3-9.png",
-    "category": "FALSE HALO : 일그러진 영웅",
-    "description": "발렌틴 모르반",
-    "workId": "w3"
-  },
-  {
-    "id": "c7",
-    "title": "호커스",
-    "image": "/archive/images/3-1.png",
-    "category": "FALSE HALO : 일그러진 영웅",
-    "description": "카시안 베일",
-    "workId": "w3"
-  },
-  {
-    "id": "c2",
-    "title": "엘리아스 뉘스트룀",
-    "image": "/archive/images/1.png",
-    "category": "피트 월 : NORTHSTAR",
-    "workId": "w2"
-  },
-  {
-    "id": "c3",
-    "title": "요나스 켈러",
-    "image": "/archive/images/2.png",
-    "category": "피트 월 : NORTHSTAR",
-    "workId": "w2"
-  },
-  {
-    "id": "c4",
-    "title": "레오 마르샹",
-    "image": "/archive/images/3.png",
-    "category": "피트 월 : NORTHSTAR",
-    "workId": "w2"
-  },
-  {
-    "id": "c5",
-    "title": "핀 오코너",
-    "image": "/archive/images/4.png",
-    "category": "피트 월 : NORTHSTAR",
-    "workId": "w2"
-  },
-  {
-    "id": "c6",
-    "title": "다비데 콘티",
-    "image": "/archive/images/5.png",
-    "category": "피트 월 : NORTHSTAR",
-    "workId": "w2"
-  },
-  {
-    "id": "c1",
-    "title": "신광재",
-    "image": "/archive/images/shinc.png",
-    "category": "11월에는 신광재를 조심하세요",
-    "description": "청림건설 · 실장",
-    "workId": "W1"
-  }
-]
+{
+  "items": [
+    {
+      "title": "에레보스",
+      "image": "/archive/images/3-8.png",
+      "category": "FALSE HALO : 일그러진 영웅",
+      "description": "페르세아스 마브리디스"
+    },
+    {
+      "title": "데리브",
+      "image": "/archive/images/3-7.png",
+      "category": "FALSE HALO : 일그러진 영웅",
+      "description": "실뱅 드로네"
+    },
+    {
+      "title": "레조낭스",
+      "image": "/archive/images/3-6.png",
+      "category": "FALSE HALO : 일그러진 영웅",
+      "description": "뤼시앵 보트랭"
+    },
+    {
+      "title": "루인",
+      "image": "/archive/images/3-5.png",
+      "category": "FALSE HALO : 일그러진 영웅",
+      "description": "량웨이천"
+    },
+    {
+      "title": "아르카디아",
+      "image": "/archive/images/3-4.png",
+      "category": "FALSE HALO : 일그러진 영웅",
+      "description": "량웨이호"
+    },
+    {
+      "title": "알케미",
+      "image": "/archive/images/3-3.png",
+      "category": "FALSE HALO : 일그러진 영웅",
+      "description": "루카스 와일더"
+    },
+    {
+      "title": "아틀라스",
+      "image": "/archive/images/3-9.png",
+      "category": "FALSE HALO : 일그러진 영웅",
+      "description": "발렌틴 모르반"
+    },
+    {
+      "title": "호커스",
+      "image": "/archive/images/3-1.png",
+      "category": "FALSE HALO : 일그러진 영웅",
+      "description": "카시안 베일"
+    },
+    {
+      "title": "엘리아스 뉘스트룀",
+      "image": "/archive/images/1.png",
+      "category": "피트 월 : NORTHSTAR"
+    },
+    {
+      "title": "요나스 켈러",
+      "image": "/archive/images/2.png",
+      "category": "피트 월 : NORTHSTAR"
+    },
+    {
+      "title": "레오 마르샹",
+      "image": "/archive/images/3.png",
+      "category": "피트 월 : NORTHSTAR"
+    },
+    {
+      "title": "핀 오코너",
+      "image": "/archive/images/4.png",
+      "category": "피트 월 : NORTHSTAR"
+    },
+    {
+      "title": "다비데 콘티",
+      "image": "/archive/images/5.png",
+      "category": "피트 월 : NORTHSTAR"
+    },
+    {
+      "title": "신광재",
+      "image": "/archive/images/shinc.png",
+      "category": "11월에는 신광재를 조심하세요",
+      "description": "청림건설 · 실장"
+    }
+  ]
+}

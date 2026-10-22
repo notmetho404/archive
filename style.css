@@ -25,51 +25,6 @@
 /* Multiple platform buttons on work detail pages */
 .platform-links{display:flex;flex-wrap:wrap;gap:9px;margin:10px 0 22px}.platform-links .detail-button{display:inline-flex;margin:0;white-space:normal;text-align:center}
 
-/* ===== 테마: noir (검정 + 레드) — body[data-theme="noir"] 일 때만 적용 ===== */
-body[data-theme="noir"]{--n-red:#d7263d;--n-deep:#7a0f1e;--n-ink:#ece7ee;--n-panel:#16121a;--n-line:#4a2a31;background:radial-gradient(ellipse 80% 60% at 15% 0%,#3d0e16 0%,transparent 70%),linear-gradient(160deg,#17101a,#0a080b);background-color:#0d0a0e;color:var(--n-ink)}
-/* 질감: 노이즈 + 스캔라인 (클릭은 통과) */
-body[data-theme="noir"]::before,body[data-theme="noir"]::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50}
-body[data-theme="noir"]::before{opacity:.09;mix-blend-mode:screen;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-body[data-theme="noir"]::after{background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px);opacity:.35}
-/* 상단 메뉴 · 창 */
-body[data-theme="noir"] .taskbar{background:#17121a;border-color:var(--n-red);box-shadow:4px 4px 0 var(--n-deep)}
-body[data-theme="noir"] nav a.active{color:#ff8c9a}
-body[data-theme="noir"] .window{background:var(--n-panel);border-color:var(--n-red);box-shadow:8px 8px 0 var(--n-deep);animation:win-open .4s cubic-bezier(.2,.8,.2,1) both}
-body[data-theme="noir"] .bar{background:linear-gradient(90deg,var(--n-deep),#4d0a14);color:#ffe9ec;align-items:center;gap:12px}
-body[data-theme="noir"] .bar-title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;letter-spacing:.04em}
-body[data-theme="noir"] .win-btns{display:flex;gap:4px;flex:none}
-body[data-theme="noir"] .win-btn{display:grid;place-items:center;width:18px;height:16px;border:1px solid #ff8c9a;background:#2a0a10;font-size:10px;line-height:1}
-body[data-theme="noir"] .win-btn:last-child{background:var(--n-red);border-color:#ffd0d6}
-body[data-theme="noir"] .statusbar{display:flex;justify-content:space-between;gap:12px;padding:7px 15px;border-top:1px solid var(--n-line);background:#100c13;color:#b58a91;font-size:10px;letter-spacing:.08em}
-body[data-theme="noir"] .statusbar .blink{color:var(--n-red);animation:n-blink 1.4s steps(2,start) infinite}
-/* 글 · 제목 · 구분선 */
-body[data-theme="noir"] .detail-back{color:#ff8c9a;margin-bottom:44px}
-body[data-theme="noir"] .detail-info h1{color:#fff;text-shadow:3px 3px 0 var(--n-deep)}
-body[data-theme="noir"] .detail-paragraph{color:#d6cdd4}
-body[data-theme="noir"] .detail-subtitle{color:#fff;border-bottom-color:var(--n-line)}
-body[data-theme="noir"] .detail-meta{border-color:var(--n-line)}
-body[data-theme="noir"] .detail-meta dt{color:#b58a91}
-body[data-theme="noir"] .muted,body[data-theme="noir"] footer{color:#8a6a70}
-body[data-theme="noir"] .chip{background:#2b1a21;color:#ffb3bd;border:1px solid var(--n-line)}
-/* 버튼 */
-body[data-theme="noir"] .detail-button{background:#221419;color:#ffe9ec;border-color:var(--n-red);box-shadow:3px 3px 0 var(--n-deep)}
-body[data-theme="noir"] .detail-button:hover{background:var(--n-red);color:#fff}
-body[data-theme="noir"] .character-button{background:var(--n-red);color:#fff;border-color:#ffd0d6}
-body[data-theme="noir"] .character-button:hover{background:#ff4d63}
-/* 이미지: 붉은 테두리 + 테이프 */
-body[data-theme="noir"] .detail-hero .art{position:relative;overflow:visible;background:#1d151b;border:2px solid var(--n-red);box-shadow:6px 6px 0 var(--n-deep)}
-body[data-theme="noir"] .detail-hero .art::before,body[data-theme="noir"] .detail-hero .art::after{content:"";position:absolute;width:92px;height:26px;background:rgba(236,222,190,.82);box-shadow:0 1px 3px rgba(0,0,0,.5);z-index:2}
-body[data-theme="noir"] .detail-hero .art::before{top:-9px;left:-26px;transform:rotate(-38deg)}
-body[data-theme="noir"] .detail-hero .art::after{bottom:-9px;right:-26px;transform:rotate(-38deg)}
-/* 관련 캐릭터 카드 */
-body[data-theme="noir"] .card{background:#1d151b;border-color:var(--n-red);box-shadow:3px 3px 0 var(--n-deep);color:var(--n-ink)}
-body[data-theme="noir"] .card p{color:#b9a6ab}
-body[data-theme="noir"] .card-link:hover,body[data-theme="noir"] .card-link:focus-visible{box-shadow:5px 7px 0 var(--n-deep)}
-@keyframes win-open{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}
-@keyframes n-blink{to{visibility:hidden}}
-@media(max-width:650px){body[data-theme="noir"] .detail-hero .art::before{left:-14px}body[data-theme="noir"] .detail-hero .art::after{right:-14px}}
-@media(prefers-reduced-motion:reduce){body[data-theme="noir"] .window,body[data-theme="noir"] .statusbar .blink{animation:none}}
-
 /* ===== 메인홈 리디자인: WORLD.EXE 바탕화면 ===== */
 @font-face{font-family:'Galmuri11';src:url('fonts/Galmuri11-Bold.woff2') format('woff2');font-weight:400 700;font-display:swap}
 .logo,.bar,.statusbar,.folder h3,.feature-bar,.feature-sticker,.home-intro h1{font-family:'Galmuri11','Malgun Gothic',Arial,sans-serif}
@@ -110,24 +65,6 @@ body[data-type="home"]{background:radial-gradient(circle at 1px 1px,rgba(52,57,9
 .feature-open{display:inline-block;margin-top:8px;border:2px solid #34395a;background:#f1ecff;padding:9px 14px;font-weight:700;box-shadow:3px 3px 0 #34395a}
 .feature:hover .feature-open,.feature:focus-visible .feature-open{background:#363d72;color:#fff}
 .feature-sticker{position:absolute;bottom:-15px;right:16px;background:#ffdae5;color:#292e50;border:2px solid #34395a;padding:5px 12px;font-size:13px;transform:rotate(8deg);box-shadow:2px 2px 0 #34395a;z-index:3}
-/* 대표 창 · 카드: noir 작품 */
-.feature[data-theme="noir"]{background:#16121a;border-color:#d7263d;box-shadow:6px 6px 0 #7a0f1e;color:#ece7ee}
-.feature[data-theme="noir"]:hover,.feature[data-theme="noir"]:focus-visible{box-shadow:8px 10px 0 #7a0f1e}
-.feature[data-theme="noir"]::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px);opacity:.35}
-.feature[data-theme="noir"] .feature-bar{background:linear-gradient(90deg,#7a0f1e,#4d0a14);color:#ffe9ec}
-.feature[data-theme="noir"] .win-btn{border-color:#ff8c9a;background:#2a0a10}
-.feature[data-theme="noir"] .win-btn:last-child{background:#d7263d;border-color:#ffd0d6}
-.feature[data-theme="noir"] .art{position:relative;overflow:visible;background:#1d151b;border-color:#d7263d;box-shadow:4px 4px 0 #7a0f1e}
-.feature[data-theme="noir"] .art::before{content:"";position:absolute;top:-8px;left:-20px;width:70px;height:22px;background:rgba(236,222,190,.85);box-shadow:0 1px 3px rgba(0,0,0,.5);transform:rotate(-38deg);z-index:2}
-.feature[data-theme="noir"] h2{color:#fff;text-shadow:2px 2px 0 #7a0f1e}
-.feature[data-theme="noir"] .feature-info p{color:#d6cdd4}
-.feature[data-theme="noir"] .feature-info .feature-date{color:#b58a91}
-.feature[data-theme="noir"] .chip{background:#2b1a21;color:#ffb3bd;border:1px solid #4a2a31}
-.feature[data-theme="noir"] .feature-open{background:#d7263d;color:#fff;border-color:#ffd0d6;box-shadow:3px 3px 0 #7a0f1e}
-.card[data-theme="noir"]{background:#16121a;border-color:#d7263d;box-shadow:3px 3px 0 #7a0f1e;color:#ece7ee}
-.card[data-theme="noir"] p{color:#b9a6ab}
-.card[data-theme="noir"] .chip{background:#2b1a21;color:#ffb3bd;border:1px solid #4a2a31}
-.card-link[data-theme="noir"]:hover,.card-link[data-theme="noir"]:focus-visible{box-shadow:5px 7px 0 #7a0f1e}
 #more-title{margin:0 0 16px}
 @media(max-width:800px){.home-hero{grid-template-columns:1fr;gap:34px}.feature{transform:none}.feature-sticker{right:10px}}
 @media(max-width:550px){.home-window .inside{padding:20px}.home-window .folders{grid-template-columns:1fr 1fr}.home-window .folder{grid-template-columns:1fr;row-gap:6px;justify-items:start}.home-window .folder .ico{grid-row:auto}.feature-body{padding:14px;gap:14px}}
@@ -183,3 +120,85 @@ body[data-type="home"]{background:radial-gradient(circle at 1px 1px,rgba(52,57,9
  .tl-item::after{left:-1px}
 }
 @media(max-width:550px){.app-window .inside{padding:20px}}
+
+/* ===== 작품별 테마: data-theme="이름" — 색은 변수(--t-*)로 정의, 테마 이름만 바꿔서 적용 ===== */
+[data-theme="noir"]{--t-base:#0d0a0e;--t-bg1:#17101a;--t-bg2:#0a080b;--t-glow:#3d0e16;--t-panel:#16121a;--t-panel2:#1d151b;--t-status:#100c13;--t-ink:#ece7ee;--t-title:#fff;--t-body:#d6cdd4;--t-sub:#b9a6ab;--t-muted:#8a6a70;--t-meta:#b58a91;--t-accent:#d7263d;--t-deep:#7a0f1e;--t-hl:#ff8c9a;--t-bar1:#7a0f1e;--t-bar2:#4d0a14;--t-bar-ink:#ffe9ec;--t-winbtn:#2a0a10;--t-winborder:#ff8c9a;--t-line:#4a2a31;--t-chip-bg:#2b1a21;--t-chip-ink:#ffb3bd;--t-btn-bg:#221419;--t-btn-ink:#ffe9ec;--t-fill:#d7263d;--t-fill-ink:#fff;--t-fill-border:#ffd0d6;--t-fill-hover:#ff4d63;--t-tsx:#7a0f1e;--t-tape:rgba(236,222,190,.85);--t-scan:.35;--t-noise:.09}
+[data-theme="halo"]{--t-base:#050810;--t-bg1:#0a1224;--t-bg2:#04060d;--t-glow:#0b3a52;--t-panel:#08101f;--t-panel2:#0d172b;--t-status:#050b16;--t-ink:#e6f6ff;--t-title:#fff;--t-body:#c3d8e6;--t-sub:#8fb0c4;--t-muted:#5f8095;--t-meta:#78a2ba;--t-accent:#35d6f5;--t-deep:#0a4a66;--t-hl:#7aeaff;--t-bar1:#0a4a66;--t-bar2:#06283a;--t-bar-ink:#e6faff;--t-winbtn:#04202e;--t-winborder:#7aeaff;--t-line:#17384a;--t-chip-bg:#0f2434;--t-chip-ink:#8fe9ff;--t-btn-bg:#0c1a2b;--t-btn-ink:#e6faff;--t-fill:#35d6f5;--t-fill-ink:#02141f;--t-fill-border:#b6f3ff;--t-fill-hover:#6fe6ff;--t-tsx:#0a4a66;--t-tape:rgba(94,231,255,.38);--t-scan:.3;--t-noise:.07}
+[data-theme="northstar"]{--t-base:#b7d9f5;--t-bg1:#e8f5ff;--t-bg2:#b7d9f5;--t-glow:#ffffff;--t-panel:#ffffff;--t-panel2:#f2f8ff;--t-status:#eaf4ff;--t-ink:#0e1b3d;--t-title:#0e1b3d;--t-body:#26365f;--t-sub:#51608a;--t-muted:#4d6290;--t-meta:#51608a;--t-accent:#1f63d8;--t-deep:#0f2f73;--t-hl:#1f63d8;--t-bar1:#1f63d8;--t-bar2:#0f3f9e;--t-bar-ink:#fff;--t-winbtn:#0f3f9e;--t-winborder:#cfe1ff;--t-line:#b5cdea;--t-chip-bg:#e3efff;--t-chip-ink:#0f3f9e;--t-btn-bg:#eef5ff;--t-btn-ink:#0e1b3d;--t-fill:#1f63d8;--t-fill-ink:#fff;--t-fill-border:#0f2f73;--t-fill-hover:#2d74f0;--t-tsx:transparent;--t-tape:rgba(255,210,63,.88);--t-scan:0;--t-noise:0}
+
+/* 질감: 노이즈 + 스캔라인 (클릭은 통과) */
+body[data-theme]{background:radial-gradient(ellipse 80% 60% at 15% 0%,var(--t-glow) 0%,transparent 70%),linear-gradient(160deg,var(--t-bg1),var(--t-bg2));background-color:var(--t-base);color:var(--t-ink)}
+body[data-theme]::before,body[data-theme]::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50}
+body[data-theme]::before{opacity:var(--t-noise);mix-blend-mode:screen;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+body[data-theme]::after{background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px);opacity:var(--t-scan)}
+/* 상단 메뉴 · 창 */
+body[data-theme] .taskbar{background:var(--t-panel);border-color:var(--t-accent);box-shadow:4px 4px 0 var(--t-deep)}
+body[data-theme] nav a.active{color:var(--t-hl)}
+body[data-theme] .window{background:var(--t-panel);border-color:var(--t-accent);box-shadow:8px 8px 0 var(--t-deep);animation:win-open .4s cubic-bezier(.2,.8,.2,1) both}
+body[data-theme] .bar{background:linear-gradient(90deg,var(--t-bar1),var(--t-bar2));color:var(--t-bar-ink);align-items:center;gap:12px}
+body[data-theme] .bar-title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;letter-spacing:.04em}
+body[data-theme] .win-btns{display:flex;gap:4px;flex:none}
+body[data-theme] .win-btn{display:grid;place-items:center;width:18px;height:16px;border:1px solid var(--t-winborder);background:var(--t-winbtn);color:var(--t-bar-ink);font-size:10px;line-height:1}
+body[data-theme] .win-btn:last-child{background:var(--t-accent);border-color:var(--t-fill-border)}
+body[data-theme] .statusbar{display:flex;justify-content:space-between;gap:12px;padding:7px 15px;border-top:1px solid var(--t-line);background:var(--t-status);color:var(--t-meta);font-size:10px;letter-spacing:.08em}
+body[data-theme] .statusbar .blink{color:var(--t-accent);animation:n-blink 1.4s steps(2,start) infinite}
+/* 글 · 제목 · 구분선 */
+body[data-theme] .detail-back{color:var(--t-hl);margin-bottom:44px}
+body[data-theme] .detail-info h1{color:var(--t-title);text-shadow:3px 3px 0 var(--t-tsx)}
+body[data-theme] .detail-paragraph{color:var(--t-body)}
+body[data-theme] .detail-subtitle{color:var(--t-title);border-bottom-color:var(--t-line)}
+body[data-theme] .detail-meta{border-color:var(--t-line)}
+body[data-theme] .detail-meta dt{color:var(--t-meta)}
+body[data-theme] .muted,body[data-theme] footer{color:var(--t-muted)}
+:is(body[data-theme],.feature[data-theme],.card[data-theme]) .chip{background:var(--t-chip-bg);color:var(--t-chip-ink);border:1px solid var(--t-line)}
+/* 버튼 */
+body[data-theme] .detail-button{background:var(--t-btn-bg);color:var(--t-btn-ink);border-color:var(--t-accent);box-shadow:3px 3px 0 var(--t-deep)}
+body[data-theme] .detail-button:hover{background:var(--t-accent);color:var(--t-fill-ink)}
+body[data-theme] .character-button{background:var(--t-fill);color:var(--t-fill-ink);border-color:var(--t-fill-border)}
+body[data-theme] .character-button:hover{background:var(--t-fill-hover)}
+/* 이미지: 테두리 + 테이프 */
+body[data-theme] .detail-hero .art{position:relative;overflow:visible;background:var(--t-panel2);border:2px solid var(--t-accent);box-shadow:6px 6px 0 var(--t-deep)}
+body[data-theme] .detail-hero .art::before,body[data-theme] .detail-hero .art::after{content:"";position:absolute;width:92px;height:26px;background:var(--t-tape);box-shadow:0 1px 3px rgba(0,0,0,.4);z-index:2}
+body[data-theme] .detail-hero .art::before{top:-9px;left:-26px;transform:rotate(-38deg)}
+body[data-theme] .detail-hero .art::after{bottom:-9px;right:-26px;transform:rotate(-38deg)}
+/* 홈 대표 작품 창 */
+.feature[data-theme]{background:var(--t-panel);border-color:var(--t-accent);box-shadow:6px 6px 0 var(--t-deep);color:var(--t-ink)}
+.feature[data-theme]:hover,.feature[data-theme]:focus-visible{box-shadow:8px 10px 0 var(--t-deep)}
+.feature[data-theme]::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px);opacity:var(--t-scan)}
+.feature[data-theme] .feature-bar{background:linear-gradient(90deg,var(--t-bar1),var(--t-bar2));color:var(--t-bar-ink)}
+.feature[data-theme] .win-btn{border-color:var(--t-winborder);background:var(--t-winbtn);color:var(--t-bar-ink)}
+.feature[data-theme] .win-btn:last-child{background:var(--t-accent);border-color:var(--t-fill-border)}
+.feature[data-theme] .art{position:relative;overflow:visible;background:var(--t-panel2);border-color:var(--t-accent);box-shadow:4px 4px 0 var(--t-deep)}
+.feature[data-theme] .art::before{content:"";position:absolute;top:-8px;left:-20px;width:70px;height:22px;background:var(--t-tape);box-shadow:0 1px 3px rgba(0,0,0,.4);transform:rotate(-38deg);z-index:2}
+.feature[data-theme] h2{color:var(--t-title);text-shadow:2px 2px 0 var(--t-tsx)}
+.feature[data-theme] .feature-info p{color:var(--t-body)}
+.feature[data-theme] .feature-info .feature-date{color:var(--t-meta)}
+.feature[data-theme] .feature-open{background:var(--t-fill);color:var(--t-fill-ink);border-color:var(--t-fill-border);box-shadow:3px 3px 0 var(--t-deep)}
+.feature[data-theme]:hover .feature-open,.feature[data-theme]:focus-visible .feature-open{background:var(--t-fill-hover);color:var(--t-fill-ink)}
+/* 작품 · 캐릭터 카드 */
+.card[data-theme]{background:var(--t-panel);border-color:var(--t-accent);box-shadow:3px 3px 0 var(--t-deep);color:var(--t-ink)}
+.card[data-theme] p{color:var(--t-sub)}
+.card-link[data-theme]:hover,.card-link[data-theme]:focus-visible{box-shadow:5px 7px 0 var(--t-deep)}
+@keyframes win-open{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes n-blink{to{visibility:hidden}}
+@media(max-width:650px){body[data-theme] .detail-hero .art::before{left:-14px}body[data-theme] .detail-hero .art::after{right:-14px}}
+@media(prefers-reduced-motion:reduce){body[data-theme] .window,body[data-theme] .statusbar .blink{animation:none}}
+
+/* --- 테마별 추가 장식 --- */
+/* halo: 하이테크 격자 + 시안 글로우 */
+body[data-theme="halo"]{background-image:linear-gradient(rgba(94,231,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(94,231,255,.05) 1px,transparent 1px),radial-gradient(ellipse 80% 60% at 15% 0%,var(--t-glow) 0%,transparent 70%),linear-gradient(160deg,var(--t-bg1),var(--t-bg2));background-size:32px 32px,32px 32px,auto,auto}
+body[data-theme="halo"] .window{box-shadow:8px 8px 0 var(--t-deep),0 0 36px rgba(94,231,255,.16)}
+body[data-theme="halo"] .detail-info h1{text-shadow:0 0 16px rgba(94,231,255,.6),3px 3px 0 var(--t-tsx)}
+body[data-theme="halo"] .detail-hero .art{box-shadow:0 0 0 1px rgba(94,231,255,.5),0 0 24px rgba(94,231,255,.35),6px 6px 0 var(--t-deep)}
+.feature[data-theme="halo"] h2{text-shadow:0 0 14px rgba(94,231,255,.6),2px 2px 0 var(--t-tsx)}
+.feature[data-theme="halo"] .art{box-shadow:0 0 0 1px rgba(94,231,255,.5),0 0 20px rgba(94,231,255,.35),4px 4px 0 var(--t-deep)}
+/* northstar: 레이싱 체커 깃발 띠 */
+body[data-theme="northstar"] .statusbar{position:relative}
+body[data-theme="northstar"] .statusbar::before{content:"";position:absolute;left:0;right:0;top:-14px;height:12px;background:repeating-conic-gradient(#0e1b3d 0 25%,#fff 0 50%) 0 0/12px 12px}
+.feature[data-theme="northstar"] .feature-bar{border-bottom:3px solid #ffd23f}
+
+/* ===== 캐릭터 목록: 한 줄에 5명 ===== */
+body[data-type="characters"] .cards{grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+@media(max-width:1000px){body[data-type="characters"] .cards{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:800px){body[data-type="characters"] .cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:550px){body[data-type="characters"] .cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}

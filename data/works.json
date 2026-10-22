@@ -1,57 +1,58 @@
-[
-  {
-    "id": "w3",
-    "title": "FALSE HALO : 일그러진 영웅",
-    "image": "/archive/images/ezgifcom-optimize.gif",
-    "category": "근미래, 이능력, 대립, 히어로, 빌런, NAA",
-    "description": "도장 하나 찍혔다고 영웅인 양 으스대지 마",
-    "releaseDate": "2026.10.21",
-    "platforms": [
-      {
-        "name": "플레이툰",
-        "url": "https://www.plaitoon.com/ko/characters/157890b4-d874-4b5a-a5bc-252cbb8d9211"
-      },
-      {
-        "name": "크랙",
-        "url": "https://share.crack.wrtn.ai/b0v0chq"
-      }
-    ]
-  },
-  {
-    "id": "w2",
-    "title": "피트 월 : NORTHSTAR",
-    "image": "/archive/images/pitwall.gif",
-    "category": "현대, 모터스포츠, 레이싱",
-    "description": "낮은 그리드에서 가장 높은 곳까지",
-    "releaseDate": "2026.10.04",
-    "platforms": [
-      {
-        "name": "플레이툰",
-        "url": "https://www.plaitoon.com/ko/share/character/812c3298-b64c-41aa-be56-ffcfbe641e1d"
-      },
-      {
-        "name": "크랙",
-        "url": "https://share.crack.wrtn.ai/a43ldqp"
-      }
-    ]
-  },
-  {
-    "id": "w1",
-    "title": "11월에는 신광재를 조심하세요",
-    "image": "/archive/images/01.png",
-    "category": "현대, 느와르",
-    "description": "건설사 실장이라더니, 하는 일이 영 수상하다.",
-    "releaseDate": "2026.09.12",
-    "platforms": [
-      {
-        "name": "플레이툰",
-        "url": "https://www.plaitoon.com/ko/share/character/dd52d9fc-c8ee-4e23-8464-0d5bb3461c6b"
-      },
-      {
-        "name": "크랙",
-        "url": "https://share.crack.wrtn.ai/1j96jz"
-      }
-    ],
-    "theme": "noir"
-  }
-]
+{
+  "items": [
+    {
+      "title": "FALSE HALO : 일그러진 영웅",
+      "image": "/archive/images/ezgifcom-optimize.gif",
+      "category": "근미래, 이능력, 대립, 히어로, 빌런, NAA",
+      "description": "도장 하나 찍혔다고 영웅인 양 으스대지 마",
+      "releaseDate": "2026.10.21",
+      "platforms": [
+        {
+          "name": "플레이툰",
+          "url": "https://www.plaitoon.com/ko/characters/157890b4-d874-4b5a-a5bc-252cbb8d9211"
+        },
+        {
+          "name": "크랙",
+          "url": "https://share.crack.wrtn.ai/b0v0chq"
+        }
+      ],
+      "theme": "halo"
+    },
+    {
+      "title": "피트 월 : NORTHSTAR",
+      "image": "/archive/images/pitwall.gif",
+      "category": "현대, 모터스포츠, 레이싱",
+      "description": "낮은 그리드에서 가장 높은 곳까지",
+      "releaseDate": "2026.10.04",
+      "platforms": [
+        {
+          "name": "플레이툰",
+          "url": "https://www.plaitoon.com/ko/share/character/812c3298-b64c-41aa-be56-ffcfbe641e1d"
+        },
+        {
+          "name": "크랙",
+          "url": "https://share.crack.wrtn.ai/a43ldqp"
+        }
+      ],
+      "theme": "northstar"
+    },
+    {
+      "title": "11월에는 신광재를 조심하세요",
+      "image": "/archive/images/01.png",
+      "category": "현대, 느와르",
+      "description": "건설사 실장이라더니, 하는 일이 영 수상하다.",
+      "releaseDate": "2026.09.12",
+      "platforms": [
+        {
+          "name": "플레이툰",
+          "url": "https://www.plaitoon.com/ko/share/character/dd52d9fc-c8ee-4e23-8464-0d5bb3461c6b"
+        },
+        {
+          "name": "크랙",
+          "url": "https://share.crack.wrtn.ai/1j96jz"
+        }
+      ],
+      "theme": "noir"
+    }
+  ]
+}
