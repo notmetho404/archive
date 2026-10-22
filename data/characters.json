@@ -1,82 +1,82 @@
 {
   "items": [
     {
-      "title": "에레보스",
-      "image": "/archive/images/3-8.png",
-      "category": "FALSE HALO : 일그러진 영웅",
-      "description": "페르세아스 마브리디스"
-    },
-    {
-      "title": "데리브",
-      "image": "/archive/images/3-7.png",
-      "category": "FALSE HALO : 일그러진 영웅",
-      "description": "실뱅 드로네"
-    },
-    {
-      "title": "레조낭스",
-      "image": "/archive/images/3-6.png",
-      "category": "FALSE HALO : 일그러진 영웅",
-      "description": "뤼시앵 보트랭"
-    },
-    {
-      "title": "루인",
-      "image": "/archive/images/3-5.png",
-      "category": "FALSE HALO : 일그러진 영웅",
-      "description": "량웨이천"
-    },
-    {
-      "title": "아르카디아",
-      "image": "/archive/images/3-4.png",
-      "category": "FALSE HALO : 일그러진 영웅",
-      "description": "량웨이호"
-    },
-    {
-      "title": "알케미",
-      "image": "/archive/images/3-3.png",
-      "category": "FALSE HALO : 일그러진 영웅",
-      "description": "루카스 와일더"
-    },
-    {
-      "title": "아틀라스",
-      "image": "/archive/images/3-9.png",
-      "category": "FALSE HALO : 일그러진 영웅",
-      "description": "발렌틴 모르반"
-    },
-    {
       "title": "호커스",
-      "image": "/archive/images/3-1.png",
       "category": "FALSE HALO : 일그러진 영웅",
+      "image": "/archive/images/3-1.png",
       "description": "카시안 베일"
     },
     {
+      "title": "아틀라스",
+      "category": "FALSE HALO : 일그러진 영웅",
+      "image": "/archive/images/3-9.png",
+      "description": "발렌틴 모르반"
+    },
+    {
+      "title": "알케미",
+      "category": "FALSE HALO : 일그러진 영웅",
+      "image": "/archive/images/3-3.png",
+      "description": "루카스 와일더"
+    },
+    {
+      "title": "아르카디아",
+      "category": "FALSE HALO : 일그러진 영웅",
+      "image": "/archive/images/3-4.png",
+      "description": "량웨이호"
+    },
+    {
+      "title": "루인",
+      "category": "FALSE HALO : 일그러진 영웅",
+      "image": "/archive/images/3-5.png",
+      "description": "량웨이천"
+    },
+    {
+      "title": "레조낭스",
+      "category": "FALSE HALO : 일그러진 영웅",
+      "image": "/archive/images/3-6.png",
+      "description": "뤼시앵 보트랭"
+    },
+    {
+      "title": "데리브",
+      "category": "FALSE HALO : 일그러진 영웅",
+      "image": "/archive/images/3-7.png",
+      "description": "실뱅 드로네"
+    },
+    {
+      "title": "에레보스",
+      "category": "FALSE HALO : 일그러진 영웅",
+      "image": "/archive/images/3-8.png",
+      "description": "페르세아스 마브리디스"
+    },
+    {
       "title": "엘리아스 뉘스트룀",
-      "image": "/archive/images/1.png",
-      "category": "피트 월 : NORTHSTAR"
+      "category": "피트 월 : NORTHSTAR",
+      "image": "/archive/images/1.png"
     },
     {
       "title": "요나스 켈러",
-      "image": "/archive/images/2.png",
-      "category": "피트 월 : NORTHSTAR"
+      "category": "피트 월 : NORTHSTAR",
+      "image": "/archive/images/2.png"
     },
     {
       "title": "레오 마르샹",
-      "image": "/archive/images/3.png",
-      "category": "피트 월 : NORTHSTAR"
+      "category": "피트 월 : NORTHSTAR",
+      "image": "/archive/images/3.png"
     },
     {
       "title": "핀 오코너",
-      "image": "/archive/images/4.png",
-      "category": "피트 월 : NORTHSTAR"
+      "category": "피트 월 : NORTHSTAR",
+      "image": "/archive/images/4.png"
     },
     {
       "title": "다비데 콘티",
-      "image": "/archive/images/5.png",
-      "category": "피트 월 : NORTHSTAR"
+      "category": "피트 월 : NORTHSTAR",
+      "image": "/archive/images/5.png"
     },
     {
       "title": "신광재",
-      "image": "/archive/images/shinc.png",
       "category": "11월에는 신광재를 조심하세요",
+      "image": "/archive/images/shinc.png",
       "description": "청림건설 · 실장"
     }
   ]
