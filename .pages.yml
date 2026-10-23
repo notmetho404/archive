@@ -76,19 +76,6 @@ content:
           - name: detail
             label: "작품 상세 소개 (줄바꿈 가능)"
             type: text
-          - name: theme
-            label: "테마 (작품·소속 캐릭터 화면에 적용)"
-            type: select
-            options:
-              values:
-                - value: default
-                  label: "기본 (보라)"
-                - value: noir
-                  label: "느와르 (검정 + 레드)"
-                - value: halo
-                  label: "헤일로 (네이비 + 시안)"
-                - value: northstar
-                  label: "노스스타 (하늘색 + 블루)"
   - name: characters
     label: "👤 캐릭터 관리"
     type: file
@@ -205,3 +192,6 @@ content:
       - name: links
         label: "활동 페이지 링크 (https://...)"
         type: string
+      - name: notice
+        label: "안내 문구 (소개 페이지 NOTICE · 줄바꿈으로 여러 줄)"
+        type: text
