@@ -26,8 +26,30 @@ content:
           - name: image
             label: "대표 이미지 (832x1216)"
             type: image
+          - name: genre
+            label: "장르 (작품 목록 필터에 표시 · 여러 개 선택 가능)"
+            type: select
+            options:
+              multiple: true
+              values:
+                - value: "현대"
+                  label: "현대"
+                - value: "근미래"
+                  label: "근미래"
+                - value: "판타지"
+                  label: "판타지"
+                - value: "느와르"
+                  label: "느와르"
+                - value: "로맨스"
+                  label: "로맨스"
+                - value: "미스터리"
+                  label: "미스터리"
+                - value: "스릴러"
+                  label: "스릴러"
+                - value: "아포칼립스"
+                  label: "아포칼립스"
           - name: category
-            label: "장르 / 분류 (쉼표로 여러 개)"
+            label: "태그 (카드·상세에만 표시 · 쉼표로 여러 개)"
             type: string
           - name: description
             label: "작품 소개"

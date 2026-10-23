@@ -3,7 +3,10 @@
     {
       "title": "FALSE HALO : 일그러진 영웅",
       "image": "/archive/images/ezgifcom-optimize.gif",
-      "category": "근미래, 이능력, 대립, 히어로, 빌런, NAA",
+      "genre": [
+        "근미래"
+      ],
+      "category": "이능력, 대립, 히어로, 빌런, NAA",
       "description": "도장 하나 찍혔다고 영웅인 양 으스대지 마",
       "releaseDate": "2026.10.21",
       "platforms": [
@@ -21,7 +24,10 @@
     {
       "title": "피트 월 : NORTHSTAR",
       "image": "/archive/images/pitwall.gif",
-      "category": "현대, 모터스포츠, 레이싱",
+      "genre": [
+        "현대"
+      ],
+      "category": "모터스포츠, 레이싱",
       "description": "낮은 그리드에서 가장 높은 곳까지",
       "releaseDate": "2026.10.04",
       "platforms": [
@@ -39,7 +45,11 @@
     {
       "title": "11월에는 신광재를 조심하세요",
       "image": "/archive/images/01.png",
-      "category": "현대, 느와르",
+      "genre": [
+        "현대",
+        "느와르"
+      ],
+      "category": "",
       "description": "건설사 실장이라더니, 하는 일이 영 수상하다.",
       "releaseDate": "2026.09.12",
       "platforms": [

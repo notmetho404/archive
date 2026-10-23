@@ -5,12 +5,15 @@ function chips(value){const wrap=el('div','tag-list');const tags=(Array.isArray(
 function workOf(c){return db.works.find(w=>w.title===c.category)}
 function themeFor(type,x){const w=type==='works'?x:workOf(x);return w&&w.theme&&w.theme!=='default'?String(w.theme):''}
 function winButtons(){const b=el('span','win-btns');['─','□','×'].forEach(s=>b.append(el('span','win-btn',s)));return b}
-function cardFor(type,x){const card=el('a','card card-link');const th=themeFor(type,x);if(th)card.dataset.theme=th;card.href=linkFor(type,x);card.append(art(x.image,x.title),el('h3','',x.title),el('p','',x.description),chips(x.category));card.setAttribute('aria-label',x.title+' 상세 보기');return card}
+function cardFor(type,x){const card=el('a','card card-link');const th=themeFor(type,x);if(th)card.dataset.theme=th;card.href=linkFor(type,x);card.append(art(x.image,x.title),el('h3','',x.title),el('p','',x.description),chips(labelsOf(type,x)));card.setAttribute('aria-label',x.title+' 상세 보기');return card}
 const listState={query:'',tag:''};
+function genreOf(x){return (Array.isArray(x.genre)?x.genre:String(x.genre||'').split(',')).map(v=>String(v).trim()).filter(Boolean)}
+function labelsOf(type,x){return type==='works'?[...genreOf(x),...tagsOf(x)]:tagsOf(x)}
+function filterTagsOf(type,x){return type==='works'?genreOf(x):tagsOf(x)}
 function tagsOf(x){return (Array.isArray(x.category)?x.category.flatMap(v=>String(v).split(',')):String(x.category||'').split(',')).map(v=>v.trim()).filter(Boolean)}
 function drawFilters(type){
  const box=document.querySelector('#filters');if(!box)return;box.replaceChildren();
- const tags=[...new Set(db[type].flatMap(tagsOf))];if(tags.length<2){box.hidden=true;return}
+ const tags=[...new Set(db[type].flatMap(x=>filterTagsOf(type,x)))];if(tags.length<2){box.hidden=true;return}
  ['',...tags].forEach(t=>{const b=el('button','filter',t||'전체');b.type='button';b.dataset.tag=t;b.setAttribute('aria-pressed',String(listState.tag===t));
   b.addEventListener('click',()=>{listState.tag=t;box.querySelectorAll('.filter').forEach(n=>n.setAttribute('aria-pressed',String(n.dataset.tag===t)));drawCards(type)});box.append(b)})
 }
@@ -19,7 +22,7 @@ function drawCards(type,query){
  if(query!==undefined)listState.query=query;
  target.replaceChildren();
  const q=listState.query.toLowerCase(),all=[...db[type]];
- const data=all.filter(x=>(!listState.tag||tagsOf(x).includes(listState.tag))&&([x.title,x.category,x.description].join(' ')).toLowerCase().includes(q));
+ const data=all.filter(x=>(!listState.tag||filterTagsOf(type,x).includes(listState.tag))&&([x.title,x.category,genreOf(x).join(' '),x.description].join(' ')).toLowerCase().includes(q));
  const unit=type==='works'?'개':'명',count=document.querySelector('#count'),status=document.querySelector('#list-status');
  if(count)count.textContent=all.length;
  if(status)status.textContent=data.length===all.length?'전체 '+all.length+unit:'전체 '+all.length+unit+' 중 '+data.length+unit+' 표시';
@@ -71,7 +74,7 @@ function drawHome(){
   a.href=linkFor('works',top);a.setAttribute('aria-label',top.title+' 작품 열기');
   const bar=el('div','feature-bar');bar.append(el('span','feature-name','▣ '+top.title+'.EXE'),winButtons());
   const body=el('div','feature-body'),info=el('div','feature-info');
-  info.append(chips(top.category),el('h2','',top.title),el('p','',top.description||''));
+  info.append(chips(labelsOf('works',top)),el('h2','',top.title),el('p','',top.description||''));
   if(top.releaseDate){const d=el('p','feature-date');d.append(el('span','','출시'),document.createTextNode(' '+top.releaseDate));info.append(d)}
   info.append(el('span','feature-open','작품 열기 →'));
   body.append(art(top.image,top.title),info);
@@ -88,7 +91,7 @@ function applyTheme(item,theme,type){
  if(!win.querySelector('.statusbar')){const sb=el('div','statusbar');sb.append(el('span','',''),el('span','',''));sb.firstChild.append(el('span','blink','●'),document.createTextNode(' ONLINE'));const pad=n=>String(n).padStart(2,'0'),list=db[type]||[];sb.lastChild.textContent='OBJECT · '+pad(list.indexOf(item)+1)+' / '+pad(list.length);win.append(sb)}
 }
 function textSection(target,heading,value){if(!value)return;target.append(el('h2','detail-subtitle',heading),el('p','detail-paragraph',value))}
-function drawDetail(){const target=document.querySelector('#detail');if(!target)return;target.replaceChildren();const params=new URLSearchParams(location.search),type=params.get('type'),id=params.get('id');if(!['works','characters'].includes(type)||!id){target.append(el('p','empty','잘못된 상세 페이지 주소입니다.'));return}const item=db[type].find(x=>x._key===id);if(!item){target.append(el('p','empty','해당 항목을 찾을 수 없습니다.'));return}document.title=item.title+' — notmetho.exe';const back=el('a','detail-back','← '+(type==='works'?'작품 목록':'캐릭터 목록'));back.href=type+'.html';target.append(back);document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')===type+'.html'));const themeWork=type==='works'?item:workOf(item),theme=themeWork&&themeWork.theme&&themeWork.theme!=='default'?String(themeWork.theme):'';if(theme)applyTheme(item,theme,type);const header=el('div','detail-hero portrait-hero'),info=el('div','detail-info');info.append(chips(item.category),el('h1','',item.title),el('p','detail-paragraph',item.description||''));header.append(art(item.image,item.title),info);target.append(header);if(type!=='works')textSection(target,'상세 소개',item.detail);if(type==='works'){
+function drawDetail(){const target=document.querySelector('#detail');if(!target)return;target.replaceChildren();const params=new URLSearchParams(location.search),type=params.get('type'),id=params.get('id');if(!['works','characters'].includes(type)||!id){target.append(el('p','empty','잘못된 상세 페이지 주소입니다.'));return}const item=db[type].find(x=>x._key===id);if(!item){target.append(el('p','empty','해당 항목을 찾을 수 없습니다.'));return}document.title=item.title+' — notmetho.exe';const back=el('a','detail-back','← '+(type==='works'?'작품 목록':'캐릭터 목록'));back.href=type+'.html';target.append(back);document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')===type+'.html'));const themeWork=type==='works'?item:workOf(item),theme=themeWork&&themeWork.theme&&themeWork.theme!=='default'?String(themeWork.theme):'';if(theme)applyTheme(item,theme,type);const header=el('div','detail-hero portrait-hero'),info=el('div','detail-info');info.append(chips(labelsOf(type,item)),el('h1','',item.title),el('p','detail-paragraph',item.description||''));header.append(art(item.image,item.title),info);target.append(header);if(type!=='works')textSection(target,'상세 소개',item.detail);if(type==='works'){
  if(item.releaseDate){const meta=el('dl','detail-meta'),row=el('div','detail-meta-row');row.append(el('dt','','출시일'),el('dd','',String(item.releaseDate)));meta.append(row);info.append(meta)}
  const related=db.characters.filter(c=>c.category===item.title);
  if(related.length){info.append(el('h2','detail-subtitle','등장 캐릭터'));const charBox=el('div','platform-links character-links');related.forEach(c=>{const a=el('a','detail-button character-button',c.title+' →');a.href=linkFor('characters',c);charBox.append(a)});info.append(charBox)}
