@@ -128,14 +128,14 @@ a.ticket-wrap:hover{transform:translateY(-4px);color:var(--ivory)}
 .dt-meta .d{font-family:var(--mono);font-weight:700;font-size:13px}
 .dt-meta .d span{color:var(--gold);letter-spacing:.14em;margin-right:8px}
 .cast{margin-top:48px}
-.cast-list{display:flex;flex-wrap:wrap;gap:20px;margin-top:24px}
-.cast-card{flex:1 1 320px;max-width:400px}
-.cast-card .ticket{flex-direction:row;height:170px;border:1px solid var(--gold)}
+.cast-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;margin-top:24px}
+.cast-card{max-width:none}
+.cast-card .ticket{flex:none;flex-direction:row;height:150px;border:1px solid var(--gold)}
 .cast-img{position:relative;flex:1 1 auto;min-width:0}
 .cast-img .art{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;font-size:14px}
 .cast-img .art img{object-position:50% 18%}
 .cast-img .badge{left:8px;top:8px;font-size:11px;padding:2px 8px;z-index:2}
-.cast-stub{position:relative;flex:0 0 104px;border-left:2px dashed var(--gold);padding:12px 10px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+.cast-stub{position:relative;flex:0 0 96px;border-left:2px dashed var(--gold);padding:12px 10px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
 .cast-stub::before,.cast-stub::after{content:"";position:absolute;left:-14px;width:26px;height:26px;border-radius:50%;background:var(--bg)}
 .cast-stub::before{top:-14px}.cast-stub::after{bottom:-14px}
 .cast-stub strong{font-family:var(--serif);font-size:14px;line-height:1.3;font-weight:900;word-break:keep-all;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
