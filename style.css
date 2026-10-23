@@ -210,3 +210,9 @@ body[data-type="characters"] .cards{grid-template-columns:repeat(5,minmax(0,1fr)
 .tl-tag[data-tag="수정"]{background:#fff3c4;color:#5a4300}
 .tl-tag[data-tag="공지"]{background:#2d3561;color:#fff}
 .tl-tag[data-tag="이벤트"]{background:#c9f3dc;color:#0d5c33}
+
+/* ===== 작품 목록: 한 줄에 4개 ===== */
+body[data-type="works"] .cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media(max-width:1000px){body[data-type="works"] .cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:800px){body[data-type="works"] .cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:450px){body[data-type="works"] .cards{grid-template-columns:1fr}}
