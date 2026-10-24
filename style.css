@@ -116,9 +116,8 @@ a.ticket-wrap:hover{transform:translateY(-4px);color:var(--ivory)}
 .dt-block .t-mini{display:block;padding:0}
 .dt-block p{margin:10px 0 0;font-size:13px;line-height:26px;font-weight:500;white-space:pre-line;background:repeating-linear-gradient(180deg,transparent 0 25px,rgba(217,180,90,.45) 25px 26px)}
 .dt-flex{flex:1}
-.dt-actions{display:flex;border-top:1px solid var(--gold)}
-.dt-actions a{flex:1 1 0;display:block;padding:14px 16px;border-right:1px solid var(--gold)}
-.dt-actions a:last-child{border-right:0}
+.dt-actions{display:flex;flex-wrap:wrap;border-top:1px solid var(--gold);overflow:hidden}
+.dt-actions a{flex:1 1 120px;display:block;padding:14px 16px;border-right:1px solid var(--gold);border-bottom:1px solid var(--gold);margin-bottom:-1px}
 .dt-actions a:hover{background:rgba(217,180,90,.12)}
 .dt-actions .t-mini{display:block}
 .dt-actions strong{display:block;margin-top:4px;font-size:14px}
