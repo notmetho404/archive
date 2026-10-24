@@ -73,6 +73,13 @@ content:
                 label: "플랫폼 링크 (https://...)"
                 type: string
                 required: true
+          - name: homepage
+            label: "작품(캐릭터) 홈페이지 링크 (https://...)"
+            type: string
+            description: "넣으면 작품 상세 티켓에 홈페이지 버튼이 생겨요. 비워두면 안 보여요."
+          - name: homepageLabel
+            label: "홈페이지 버튼 문구 (비우면 '홈페이지')"
+            type: string
           - name: detail
             label: "작품 상세 소개 (줄바꿈 가능)"
             type: text

@@ -165,7 +165,7 @@ function drawDetail(){
   const year=String(item.releaseDate||'').match(/\d{4}/);
   const rows=[];if(related.length)rows.push(['캐릭터',related.length+'명']);if(plats.length)rows.push(['플랫폼',plats.map(p=>p.name).join(' · ')]);
   const syn=[item.description,item.detail].filter(Boolean).join('\n\n');
-  row.append(posterTicket(item,type),infoTicket({no:noOf(type,item),kicker:'TITLE',right:year?'['+year[0]+']':'',title:item.title,sub:item.releaseDate?'공개 '+dateText(item.releaseDate):'',rows,blocks:[['SYNOPSIS',syn]],actions:plats.map(p=>actionLink('WATCH ON',p.name+' ↗',safeExternal(p.url),true))}));
+  row.append(posterTicket(item,type),infoTicket({no:noOf(type,item),kicker:'TITLE',right:year?'['+year[0]+']':'',title:item.title,sub:item.releaseDate?'공개 '+dateText(item.releaseDate):'',rows,blocks:[['SYNOPSIS',syn]],actions:[...plats.map(p=>actionLink('WATCH ON',p.name+' ↗',safeExternal(p.url),true)),...(safeExternal(item.homepage)?[actionLink('HOMEPAGE',String(item.homepageLabel||'홈페이지').trim()+' ↗',safeExternal(item.homepage),true)]:[])]}));
   target.append(row);
   const lab=labelsOf('works',item);
   if(lab.length||item.releaseDate){const meta=el('div','dt-meta');meta.append(tagRow(lab));const d=el('div','d');d.append(el('span','','DATE.'),document.createTextNode(dateText(item.releaseDate)||'—'));meta.append(d);target.append(meta)}
