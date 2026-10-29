@@ -1,6 +1,11 @@
 {
   "items": [
     {
+      "title": "아우렌",
+      "category": "용사님, 토벌은 다음에!",
+      "description": "아우레온"
+    },
+    {
       "title": "호커스",
       "category": "FALSE HALO : 일그러진 영웅",
       "image": "/archive/images/3-1.png",
@@ -78,11 +83,6 @@
       "category": "11월에는 신광재를 조심하세요",
       "image": "/archive/images/shinc.png",
       "description": "청림건설 · 실장"
-    },
-    {
-      "title": "아우렌",
-      "category": "용사님, 토벌은 다음에!",
-      "description": "아우레온"
     }
   ]
 }
