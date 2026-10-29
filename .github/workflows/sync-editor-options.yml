@@ -1,0 +1,36 @@
+name: 편집기 드롭다운 자동 갱신
+
+# 작품/장르 목록이 바뀌면 편집기(.pages.yml)의 드롭다운 선택지를 자동으로 맞춥니다.
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/works.json
+      - data/genres.json
+      - scripts/sync-options.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-editor-options
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 선택지 다시 쓰기
+        run: python3 scripts/sync-options.py
+      - name: 바뀐 게 있으면 저장
+        run: |
+          if [ -n "$(git status --porcelain .pages.yml)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add .pages.yml
+            git commit -m "편집기 드롭다운 선택지 자동 갱신"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi

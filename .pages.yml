@@ -32,6 +32,7 @@ content:
             options:
               multiple: true
               values:
+                # sync:genres (자동 생성 — 직접 고치지 마세요)
                 - value: "현대"
                   label: "현대"
                 - value: "근미래"
@@ -42,12 +43,15 @@ content:
                   label: "느와르"
                 - value: "로맨스"
                   label: "로맨스"
+                - value: "로판"
+                  label: "로판"
                 - value: "미스터리"
                   label: "미스터리"
                 - value: "스릴러"
                   label: "스릴러"
                 - value: "아포칼립스"
                   label: "아포칼립스"
+                # end sync:genres
           - name: category
             label: "태그 (카드·상세에만 표시 · 쉼표로 여러 개)"
             type: string
@@ -83,6 +87,24 @@ content:
           - name: detail
             label: "작품 상세 소개 (줄바꿈 가능)"
             type: text
+  - name: genres
+    label: "🏷 장르 목록"
+    type: file
+    path: data/genres.json
+    format: json
+    fields:
+      - name: items
+        label: "장르 목록 (여기에 추가하면 작품의 '장르' 드롭다운에 1분쯤 뒤 나타나요)"
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name}"
+        fields:
+          - name: name
+            label: "장르 이름"
+            type: string
+            required: true
   - name: characters
     label: "👤 캐릭터 관리"
     type: file
@@ -106,12 +128,16 @@ content:
             type: select
             options:
               values:
+                # sync:works (자동 생성 — 직접 고치지 마세요)
+                - value: "용사님, 토벌은 다음에!"
+                  label: "용사님, 토벌은 다음에!"
                 - value: "FALSE HALO : 일그러진 영웅"
                   label: "FALSE HALO : 일그러진 영웅"
                 - value: "피트 월 : NORTHSTAR"
                   label: "피트 월 : NORTHSTAR"
                 - value: "11월에는 신광재를 조심하세요"
                   label: "11월에는 신광재를 조심하세요"
+                # end sync:works
           - name: image
             label: "캐릭터 이미지 (832x1216)"
             type: image
