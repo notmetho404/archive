@@ -181,3 +181,15 @@ function drawDetail(){
 }
 
 document.addEventListener('DOMContentLoaded',async()=>{const type=document.body.dataset.type;try{db=await loadData();if(type==='works'||type==='characters'){drawFilters(type);drawCards(type);const search=document.querySelector('#search');if(search)search.addEventListener('input',e=>drawCards(type,e.target.value))}drawUpdates();drawProfile();drawHome();if(type==='detail')drawDetail()}catch(err){console.error(err);const target=document.querySelector('#detail')||document.querySelector('#listing')||document.querySelector('#home')||document.querySelector('#updates')||document.querySelector('#profile');if(target)target.append(el('p','empty','데이터를 불러오지 못했습니다. 잠시 후 새로고침해 주세요.'))}});
+
+/* ===== 밤하늘 배경 ===== */
+function drawSky(){
+ if(document.querySelector('.sky'))return;
+ const sky=el('div','sky');sky.setAttribute('aria-hidden','true');
+ const au=el('div','aurora');for(let i=0;i<3;i++)au.append(el('i'));sky.append(au);
+ const small=window.innerWidth<700,count=small?60:130,r=Math.random;
+ for(let i=0;i<count;i++){const s=el('i','star'),size=r()<.12?2.4:(r()<.5?1.6:1);s.style.cssText='left:'+(r()*100)+'%;top:'+(r()*100)+'%;width:'+size+'px;height:'+size+'px;--d:'+(3+r()*5).toFixed(1)+'s;--l:-'+(r()*8).toFixed(1)+'s;--o:'+(.35+r()*.5).toFixed(2);sky.append(s)}
+ for(let i=0;i<3;i++){const m=el('i','meteor');const place=()=>{m.style.left=(r()*70)+'%';m.style.top=(r()*40)+'%'};place();m.style.animationDuration=(13+i*4)+'s';m.style.animationDelay='-'+(i*5+r()*4).toFixed(1)+'s';m.addEventListener('animationiteration',place);sky.append(m)}
+ document.body.prepend(sky)
+}
+drawSky();

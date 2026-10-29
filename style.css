@@ -1,14 +1,14 @@
 /* ===== ARCHIVE CINEMA — 티켓 디자인 ===== */
-:root{--bg:#171310;--green:#0f2a22;--gold:#d9b45a;--ivory:#f1e6c8;--muted:#c9bb94;--line:rgba(217,180,90,.3);--serif:'Noto Serif KR',serif;--mono:'Space Mono','Noto Sans KR',monospace;--sans:'Noto Sans KR','Malgun Gothic',sans-serif}
+:root{--bg:#0b1020;--green:#0f2a22;--gold:#d9b45a;--ivory:#f1e6c8;--muted:#c9bb94;--line:rgba(217,180,90,.3);--serif:'Noto Serif KR',serif;--mono:'Space Mono','Noto Sans KR',monospace;--sans:'Noto Sans KR','Malgun Gothic',sans-serif}
 *{box-sizing:border-box}
 html{background:var(--bg)}
 body{margin:0;background:var(--bg);color:var(--ivory);font:13px/1.6 var(--sans);min-height:100vh;position:relative}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.11;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-body::before{content:"";position:absolute;left:0;right:0;top:0;height:640px;pointer-events:none;background:radial-gradient(ellipse 70% 100% at 50% 0,rgba(217,180,90,.13),rgba(217,180,90,0) 70%)}
+
 a{color:var(--ivory);text-decoration:none}a:hover{color:var(--gold)}
 a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 img{max-width:100%}
-.page{position:relative;max-width:1280px;margin:0 auto;padding:24px 56px 72px;min-height:100vh}
+.page{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:24px 56px 72px;min-height:100vh}
 
 /* 상단 메뉴 */
 .topbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 28px;border-bottom:1px solid var(--line);padding-bottom:6px}
@@ -194,3 +194,20 @@ a.ticket-wrap:hover{transform:translateY(-4px);color:var(--ivory)}
 @media(max-width:760px){.page{padding:16px 20px 56px}.cards.works{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 20px}.cards.chars{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}.page-head{padding:36px 0 24px}.page-head h1{font-size:28px}.hero-main{padding:32px 26px}.hero-stub{flex:1 1 100%;min-width:0;flex-direction:row;flex-wrap:wrap;align-items:center;border-left:0;border-top:2px dashed var(--gold);padding:22px 26px}.hero-stub::before,.hero-stub::after{top:-14px;bottom:auto}.hero-stub::before{left:-14px}.hero-stub::after{left:auto;right:-14px}.about{gap:36px;padding-top:36px}.t-title div{font-size:17px}.t-in .t-label{letter-spacing:.1em;padding-left:10px;padding-right:10px}}
 @media(max-width:520px){.cards.works{grid-template-columns:1fr;max-width:340px;margin:0 auto}.topbar nav{gap:0 18px;font-size:14px}.up-date{width:100%}}
 @media(prefers-reduced-motion:reduce){a.ticket-wrap{transition:none}a.ticket-wrap:hover{transform:none}}
+
+/* ===== 밤하늘 배경: 별 · 오로라 · 별똥별 ===== */
+.sky{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:linear-gradient(180deg,#080d1a 0%,#0b1122 60%,#0d1224 100%)}
+.aurora{position:absolute;left:-10vw;right:-10vw;top:-8vh;height:62vh;filter:blur(40px);mix-blend-mode:screen;opacity:1}
+.aurora i{position:absolute;display:block;border-radius:50%}
+.aurora i:nth-child(1){left:6%;top:14%;width:52vw;height:30vh;background:radial-gradient(closest-side,rgba(62,224,160,.6),rgba(62,224,160,0));animation:aur-a 22s ease-in-out infinite alternate}
+.aurora i:nth-child(2){left:34%;top:4%;width:56vw;height:34vh;background:radial-gradient(closest-side,rgba(47,183,201,.5),rgba(47,183,201,0));animation:aur-b 28s ease-in-out infinite alternate}
+.aurora i:nth-child(3){left:58%;top:18%;width:44vw;height:28vh;background:radial-gradient(closest-side,rgba(138,92,240,.5),rgba(138,92,240,0));animation:aur-c 25s ease-in-out infinite alternate}
+@keyframes aur-a{from{transform:translate(-4vw,0) scale(1,.9) skewX(-12deg)}to{transform:translate(8vw,5vh) scale(1.15,1.2) skewX(10deg)}}
+@keyframes aur-b{from{transform:translate(6vw,2vh) scale(1.1,1) skewX(8deg)}to{transform:translate(-8vw,-2vh) scale(.9,1.25) skewX(-10deg)}}
+@keyframes aur-c{from{transform:translate(0,0) scale(1) skewX(-6deg)}to{transform:translate(-6vw,6vh) scale(1.2,.9) skewX(12deg)}}
+.star{position:absolute;display:block;border-radius:50%;background:#fff6dc;animation:twinkle var(--d,4s) ease-in-out var(--l,0s) infinite}
+@keyframes twinkle{0%,100%{opacity:var(--o,.5);transform:scale(1)}50%{opacity:.12;transform:scale(.7)}}
+.meteor{position:absolute;display:block;width:150px;height:2px;border-radius:2px;opacity:0;background:linear-gradient(90deg,rgba(255,246,220,0),rgba(255,246,220,.95));transform-origin:100% 50%;animation:meteor 16s linear infinite}
+.meteor::after{content:"";position:absolute;right:-1px;top:-2px;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 8px 2px rgba(255,240,200,.8)}
+@keyframes meteor{0%{opacity:0;transform:rotate(28deg) translateX(0)}1%{opacity:1}7%{opacity:0;transform:rotate(28deg) translateX(520px)}100%{opacity:0;transform:rotate(28deg) translateX(520px)}}
+@media(prefers-reduced-motion:reduce){.aurora i,.star,.meteor{animation:none}.meteor{display:none}}
