@@ -1,6 +1,26 @@
 {
   "items": [
     {
+      "title": "용사님, 토벌은 다음에!",
+      "category": "로코, 인외, 순애",
+      "description": "용을 잡으러 갔는데 사람이 살고 있다",
+      "releaseDate": "2026.10.28",
+      "platforms": [
+        {
+          "name": "플레이툰",
+          "url": "https://www.plaitoon.com/ko/share/character/d6990d6b-0529-419c-8c43-8d12b2cdbc97"
+        },
+        {
+          "name": "크랙",
+          "url": "https://share.crack.wrtn.ai/4i4nn25"
+        },
+        {
+          "name": "크랙ˢᵃᶠᵉ",
+          "url": "https://share.crack.wrtn.ai/nbn3siv"
+        }
+      ]
+    },
+    {
       "title": "FALSE HALO : 일그러진 영웅",
       "image": "/archive/images/ezgifcom-optimize.gif",
       "genre": [
@@ -62,26 +82,6 @@
         }
       ],
       "homepage": "https://gwangbros.naru.pub/"
-    },
-    {
-      "title": "용사님, 토벌은 다음에!",
-      "category": "로코, 인외, 순애",
-      "description": "용을 잡으러 갔는데 사람이 살고 있다",
-      "releaseDate": "2026.10.28",
-      "platforms": [
-        {
-          "name": "플레이툰",
-          "url": "https://www.plaitoon.com/ko/share/character/d6990d6b-0529-419c-8c43-8d12b2cdbc97"
-        },
-        {
-          "name": "크랙ˢᵃᶠᵉ",
-          "url": "https://share.crack.wrtn.ai/nbn3siv"
-        },
-        {
-          "name": "크랙",
-          "url": "https://share.crack.wrtn.ai/4i4nn25"
-        }
-      ]
     }
   ]
 }
