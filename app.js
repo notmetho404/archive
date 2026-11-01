@@ -26,15 +26,19 @@ function stubInfo(label,value){const k=el('div','k');k.append(el('span','',label
 function sectionHead(kicker,title,linkHref,linkText){const h=el('div','section-head'),l=el('div','l');l.append(el('span','k',kicker),el('h2','',title));h.append(l);if(linkHref){const a=el('a','',linkText);a.href=linkHref;h.append(a)}return h}
 function externalButton(url,label){const safe=safeExternal(url);if(!safe)return null;const a=el('a','',label);a.href=safe;a.target='_blank';a.rel='noopener noreferrer';return a}
 
-/* 작품 티켓 */
+/* 작품 티켓 (가로형: 왼쪽 포스터 + 오른쪽 티켓) */
 function workCard(x){
- const wrap=el('a','ticket-wrap');wrap.href=linkFor('works',x);wrap.setAttribute('aria-label',x.title+' 상세 보기');
- const t=el('div','ticket mask-tb'),inn=el('div','t-in');
- const poster=el('div','t-poster');poster.append(art(x.image,x.title));
- const title=el('div','t-title');title.append(el('div','',x.title));
- inn.append(el('div','t-label','ARCHIVE CINEMA · NO. '+noOf('works',x)),poster,title,rule(),el('div','t-desc',x.description||''),tagRow(labelsOf('works',x)));
- const stub=el('div','t-stub');stub.append(stubInfo('DATE.',dateText(x.releaseDate)||'—'),barcode(x.title,128,34));
- t.append(inn,el('div','t-tear inset'),stub);wrap.append(t);return wrap
+ const item=el('div','h-item'),wrap=el('a','ticket-wrap h-card');wrap.href=linkFor('works',x);wrap.setAttribute('aria-label',x.title+' 상세 보기');
+ const t=el('div','ticket mask-tb'),poster=el('div','h-poster');poster.append(art(x.image,x.title));
+ const body=el('div','h-body'),head=el('div','t-label h-head');head.append(el('span','','ARCHIVE CINEMA · ORIGINAL TICKET'),el('span','','NO. '+noOf('works',x)));
+ const year=String(x.releaseDate||'').match(/\d{4}/),box=el('div','h-box'),mini=el('div','t-mini');mini.append(el('span','','TITLE'),el('span','',year?'['+year[0]+']':''));
+ const title=el('div','h-title',x.title),sub=el('div','h-sub',x.description||'');
+ const related=db.characters.filter(c=>c.category===x.title).length,plats=(Array.isArray(x.platforms)?x.platforms:[]).map(p=>String(p&&p.name||'').trim()).filter(Boolean);
+ const rows=el('div','h-rows');[['공개',dateText(x.releaseDate)],['플랫폼',plats.join(' · ')],['캐릭터',related?related+'명':'']].forEach(([k,v])=>{if(!v)return;const r=el('div','');r.append(el('span','k',k),el('b','',v));rows.append(r)});
+ const cells=el('div','h-cells');[['DATE',dateText(x.releaseDate)||'—'],['CAST',related?related+'명':'—']].forEach(([k,v])=>{const c=el('div','');c.append(el('span','',k),el('b','',v));cells.append(c)});
+ const foot=el('div','h-foot');foot.append(el('span','','LIGHTS DOWN, SHOW BEGINS'),barcode(x.title,56,14));
+ box.append(mini,title,sub,rows,el('div','h-fill'),cells);body.append(head,box,foot);t.append(poster,body);wrap.append(t);
+ const under=el('div','h-under'),tg=el('div','h-tags');labelsOf('works',x).forEach(l=>tg.append(el('span','','#'+l)));under.append(tg);item.append(wrap,under);return item
 }
 /* 캐릭터 티켓 */
 function charCard(x){
@@ -145,6 +149,7 @@ function infoTicket(o){
  t.append(head,box);wrap.append(t);return wrap
 }
 function actionLink(label,text,href,external){const a=el('a','');const m=el('span','t-mini',label),s=el('strong','',text);a.append(m,s);a.href=href;if(external){a.target='_blank';a.rel='noopener noreferrer'}return a}
+function panel(k,label,text){const p=el('section','dt-panel'),h=el('div','dt-panel-head');h.append(el('span','',k),el('span','',label));p.append(h,el('p','',String(text)));return p}
 function castCard(c){
  const wrap=el('a','ticket-wrap cast-card');wrap.href=linkFor('characters',c);wrap.setAttribute('aria-label',c.title+' 상세 보기');
  const t=el('div','ticket mask-lr'),img=el('div','cast-img');img.append(art(c.image,c.title),el('div','badge','NO. '+noOf('characters',c)));
@@ -164,19 +169,21 @@ function drawDetail(){
   const plats=(Array.isArray(item.platforms)?item.platforms:[]).map(p=>({name:String(p&&p.name||'').trim(),url:p&&p.url})).filter(p=>p.name&&safeExternal(p.url));
   const year=String(item.releaseDate||'').match(/\d{4}/);
   const rows=[];if(related.length)rows.push(['캐릭터',related.length+'명']);if(plats.length)rows.push(['플랫폼',plats.map(p=>p.name).join(' · ')]);
-  const syn=[item.description,item.detail].filter(Boolean).join('\n\n');
-  row.append(posterTicket(item,type),infoTicket({no:noOf(type,item),kicker:'TITLE',right:year?'['+year[0]+']':'',title:item.title,sub:item.releaseDate?'공개 '+dateText(item.releaseDate):'',rows,blocks:[['SYNOPSIS',syn]],actions:[...plats.map(p=>actionLink('WATCH ON',p.name+' ↗',safeExternal(p.url),true)),...(safeExternal(item.homepage)?[actionLink('HOMEPAGE',String(item.homepageLabel||'홈페이지').trim()+' ↗',safeExternal(item.homepage),true)]:[])]}));
+  const syn=item.description||'';
+  row.append(infoTicket({no:noOf(type,item),kicker:'TITLE',right:year?'['+year[0]+']':'',title:item.title,sub:item.releaseDate?'공개 '+dateText(item.releaseDate):'',rows,blocks:[['SYNOPSIS',syn]],actions:[...plats.map(p=>actionLink('WATCH ON',p.name+' ↗',safeExternal(p.url),true)),...(safeExternal(item.homepage)?[actionLink('HOMEPAGE',String(item.homepageLabel||'홈페이지').trim()+' ↗',safeExternal(item.homepage),true)]:[])]}),posterTicket(item,type));
   target.append(row);
   const lab=labelsOf('works',item);
   if(lab.length||item.releaseDate){const meta=el('div','dt-meta');meta.append(tagRow(lab));const d=el('div','d');d.append(el('span','','DATE.'),document.createTextNode(dateText(item.releaseDate)||'—'));meta.append(d);target.append(meta)}
+  if(item.detail)target.append(panel('ABOUT','작품 소개',item.detail));
   if(related.length){const cast=el('section','cast');cast.append(sectionHead('CAST','이 작품의 캐릭터','characters.html','캐릭터 전체 →'));const list=el('div','cast-list');related.forEach(c=>list.append(castCard(c)));cast.append(list);target.append(cast)}
  }else{
   const parent=workOf(item),rows=[];
   if(parent){const a=el('a','',parent.title);a.href=linkFor('works',parent);a.style.fontWeight='700';rows.push(['소속',a])}
   if(item.role)rows.push(['역할',item.role]);
   const acts=parent?[actionLink('FROM',parent.title+' 보기 →',linkFor('works',parent),false)]:[];
-  row.append(posterTicket(item,type),infoTicket({no:noOf(type,item),kicker:'CHARACTER',right:parent?'FROM':'',title:item.title,sub:'',rows,blocks:[['PROFILE',[item.description,item.detail].filter(Boolean).join('\n\n')],['PERSONALITY',item.personality],['APPEARANCE',item.appearance]],actions:acts}));
-  target.append(row)
+  row.append(infoTicket({no:noOf(type,item),kicker:'CHARACTER',right:parent?'FROM':'',title:item.title,sub:'',rows,blocks:[['PROFILE',item.description||'']],actions:acts}),posterTicket(item,type));
+  target.append(row);
+  [['PROFILE','상세 소개',item.detail],['PERSONALITY','성격',item.personality],['APPEARANCE','외형',item.appearance]].forEach(([k,l,v])=>{if(v)target.append(panel(k,l,v))})
  }
 }
 
