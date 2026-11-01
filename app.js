@@ -170,7 +170,7 @@ function drawDetail(){
   const year=String(item.releaseDate||'').match(/\d{4}/);
   const rows=[];if(related.length)rows.push(['캐릭터',related.length+'명']);if(plats.length)rows.push(['플랫폼',plats.map(p=>p.name).join(' · ')]);
   const syn=item.description||'';
-  row.append(infoTicket({no:noOf(type,item),kicker:'TITLE',right:year?'['+year[0]+']':'',title:item.title,sub:item.releaseDate?'공개 '+dateText(item.releaseDate):'',rows,blocks:[['SYNOPSIS',syn]],actions:[...plats.map(p=>actionLink('WATCH ON',p.name+' ↗',safeExternal(p.url),true)),...(safeExternal(item.homepage)?[actionLink('HOMEPAGE',String(item.homepageLabel||'홈페이지').trim()+' ↗',safeExternal(item.homepage),true)]:[])]}),posterTicket(item,type));
+  row.append(posterTicket(item,type),infoTicket({no:noOf(type,item),kicker:'TITLE',right:year?'['+year[0]+']':'',title:item.title,sub:item.releaseDate?'공개 '+dateText(item.releaseDate):'',rows,blocks:[['SYNOPSIS',syn]],actions:[...plats.map(p=>actionLink('WATCH ON',p.name+' ↗',safeExternal(p.url),true)),...(safeExternal(item.homepage)?[actionLink('HOMEPAGE',String(item.homepageLabel||'홈페이지').trim()+' ↗',safeExternal(item.homepage),true)]:[])]}));
   target.append(row);
   const lab=labelsOf('works',item);
   if(lab.length||item.releaseDate){const meta=el('div','dt-meta');meta.append(tagRow(lab));const d=el('div','d');d.append(el('span','','DATE.'),document.createTextNode(dateText(item.releaseDate)||'—'));meta.append(d);target.append(meta)}
@@ -181,7 +181,7 @@ function drawDetail(){
   if(parent){const a=el('a','',parent.title);a.href=linkFor('works',parent);a.style.fontWeight='700';rows.push(['소속',a])}
   if(item.role)rows.push(['역할',item.role]);
   const acts=parent?[actionLink('FROM',parent.title+' 보기 →',linkFor('works',parent),false)]:[];
-  row.append(infoTicket({no:noOf(type,item),kicker:'CHARACTER',right:parent?'FROM':'',title:item.title,sub:'',rows,blocks:[['PROFILE',item.description||'']],actions:acts}),posterTicket(item,type));
+  row.append(posterTicket(item,type),infoTicket({no:noOf(type,item),kicker:'CHARACTER',right:parent?'FROM':'',title:item.title,sub:'',rows,blocks:[['PROFILE',item.description||'']],actions:acts}));
   target.append(row);
   [['PROFILE','상세 소개',item.detail],['PERSONALITY','성격',item.personality],['APPEARANCE','외형',item.appearance]].forEach(([k,l,v])=>{if(v)target.append(panel(k,l,v))})
  }
