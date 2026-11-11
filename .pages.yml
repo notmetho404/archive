@@ -35,10 +35,10 @@ content:
                 # sync:genres (자동 생성 — 직접 고치지 마세요)
                 - value: "현대"
                   label: "현대"
-                - value: "현대판타지"
-                  label: "현대판타지"
                 - value: "근미래"
                   label: "근미래"
+                - value: "현대판타지"
+                  label: "현대판타지"
                 - value: "판타지"
                   label: "판타지"
                 - value: "느와르"
@@ -53,8 +53,6 @@ content:
                   label: "스릴러"
                 - value: "아포칼립스"
                   label: "아포칼립스"
-                - value: "현대판타지"
-                  label: "현대판타지"
                 # end sync:genres
           - name: category
             label: "태그 (카드·상세에만 표시 · 쉼표로 여러 개)"
