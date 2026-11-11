@@ -35,6 +35,8 @@ content:
                 # sync:genres (자동 생성 — 직접 고치지 마세요)
                 - value: "현대"
                   label: "현대"
+                - value: "현대판타지"
+                  label: "현대판타지"
                 - value: "근미래"
                   label: "근미래"
                 - value: "판타지"
