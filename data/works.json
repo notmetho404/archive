@@ -1,6 +1,26 @@
 {
   "items": [
     {
+      "title": "건전한 색욕 생활",
+      "image": "/archive/images/file-1.gif",
+      "genre": [
+        "현대",
+        "근미래"
+      ],
+      "platforms": [
+        {
+          "name": "플레이툰",
+          "url": "https://www.plaitoon.com/ko/characters/85e431cd-9b9d-4d71-935c-9babee7670a2"
+        },
+        {
+          "name": "크랙",
+          "url": "https://share.crack.wrtn.ai/u3ntled"
+        }
+      ],
+      "homepage": "https://deephole-noexit.naru.pub/",
+      "homepageLabel": "DEEPHOLE : NO EXIT"
+    },
+    {
       "title": "용사님, 토벌은 다음에!",
       "image": "/archive/images/file.gif",
       "genre": [
@@ -86,14 +106,6 @@
         }
       ],
       "homepage": "https://gwangbros.naru.pub/"
-    },
-    {
-      "title": "건전한 색욕 생활",
-      "image": "/archive/images/file-1.gif",
-      "genre": [
-        "현대",
-        "근미래"
-      ]
     }
   ]
 }
