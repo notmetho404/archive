@@ -137,6 +137,8 @@ content:
                   label: "피트 월 : NORTHSTAR"
                 - value: "11월에는 신광재를 조심하세요"
                   label: "11월에는 신광재를 조심하세요"
+                - value: "건전한 색욕 생활"
+                  label: "건전한 색욕 생활"
                 # end sync:works
           - name: image
             label: "캐릭터 이미지 (832x1216)"
