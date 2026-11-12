@@ -776,6 +776,8 @@
     .gallery-img{width:100%;border:1px solid #444;display:block}
     .footer-sub{display:flex;align-items:center;gap:12px}
     .footer-sub img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:1px solid #666}
+    /* home: 4 works / 5 characters per row */
+    @media(min-width:761px) and (max-width:1100px){#featured-work-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}#featured-character-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}}
   </style>
 </head>
 <body>
@@ -938,8 +940,8 @@
       const img=$('.preview-cover-image',$('#preview-body'));if(img)img.addEventListener('error',()=>{img.remove()},{once:true});
     }
     function renderHome(){
-      $('#featured-work-grid').innerHTML=shownWorks().slice(0,3).map(workCard).join('')||'<div class="no-results">전시 중인 작품이 없습니다.</div>';
-      $('#featured-character-grid').innerHTML=shownChars().slice(0,4).map(charCard).join('')||'<div class="no-results">전시 중인 캐릭터가 없습니다.</div>';
+      $('#featured-work-grid').innerHTML=shownWorks().slice(0,4).map(workCard).join('')||'<div class="no-results">전시 중인 작품이 없습니다.</div>';
+      $('#featured-character-grid').innerHTML=shownChars().slice(0,5).map(charCard).join('')||'<div class="no-results">전시 중인 캐릭터가 없습니다.</div>';
       renderFeatured();
     }
     let workFilter='ALL';let characterFilter='ALL';
