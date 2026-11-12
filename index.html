@@ -689,6 +689,73 @@
       .detail-title{font-size:41px}.info-row{grid-template-columns:118px 1fr}
     }
 
+  
+    /* v0.9: keep the full 832 x 1216 cover visible; no duplicated titles */
+    .window-body{background:#111113}
+    .window-body:has(.preview-surface-split)::after{display:none}
+    .preview-surface-split{display:grid;grid-template-columns:minmax(0,39%) minmax(0,61%);height:100%;min-height:0;min-width:0;overflow:hidden;text-decoration:none;color:#f1efeb;background:#101012}
+    .preview-surface-split.tone-red{--tone:#e34b52;--tone-soft:#28161a}
+    .preview-surface-split.tone-gold{--tone:#c6a06b;--tone-soft:#292217}
+    .preview-surface-split.tone-blue{--tone:#abb9c8;--tone-soft:#1a2128}
+    .preview-poster-side{height:100%;min-width:0;min-height:0;display:flex;align-items:center;justify-content:center;padding:12px 13px;position:relative;border-right:1px solid #38383b;background:radial-gradient(ellipse at 50% 20%,var(--tone-soft),#0d0d0f 80%)}
+    .preview-poster-side:before,.preview-poster-side:after{content:'';position:absolute;width:9px;height:9px;border-color:#6e6b6b;pointer-events:none}
+    .preview-poster-side:before{top:8px;left:9px;border-top:1px solid;border-left:1px solid}
+    .preview-poster-side:after{bottom:8px;right:9px;border-bottom:1px solid;border-right:1px solid}
+    .preview-cover{width:min(100%,170px);aspect-ratio:832/1216;max-height:100%;position:relative;background:#16161a;border:1px solid #8c8989;box-shadow:6px 7px 0 #0009;overflow:hidden;flex:none}
+    .preview-cover-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;display:block;background:#0c0c0e}
+    .preview-cover-empty{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:13px;text-align:center;background:linear-gradient(135deg,#1c1a1d,#111114 75%);padding:11px;color:#9e9ca0}
+    .preview-cover-empty .symbol{width:48px;height:48px;display:grid;place-items:center;border:1px solid #48484c;color:var(--tone);font:29px/1 var(--mono)}
+    .preview-cover-empty .placeholder-label{font:9px/1.8 var(--mono);letter-spacing:.08em}
+    .preview-cover-image:not([hidden]) + .preview-cover-empty{visibility:hidden}
+    .preview-info-side{min-width:0;min-height:0;height:100%;display:flex;flex-direction:column;justify-content:space-between;gap:8px;padding:14px 17px;background:linear-gradient(160deg,#171719,#0d0d0f)}
+    .preview-info-top{min-width:0;display:flex;flex-direction:column;gap:10px}
+    .preview-info-kicker{display:flex;justify-content:space-between;gap:7px;font:9px/1.3 var(--mono);letter-spacing:.05em;color:#aaa7a4;white-space:nowrap}
+    .preview-info-kicker .tag{color:var(--tone);display:flex;align-items:center;gap:6px}
+    .preview-info-kicker .tag:before{content:'';display:inline-block;width:5px;height:5px;background:var(--tone)}
+    .preview-info-title{margin:0;color:#faf8f5;font:900 clamp(21px,2.3vw,33px)/1.12 var(--ko);letter-spacing:-.075em;word-break:keep-all;overflow-wrap:break-word}
+    .preview-info-en{margin-top:5px;color:#b4b0ad;font:10px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+    .preview-info-copy{margin:0;color:#b9b5b0;font:11px/1.6 var(--ko);word-break:keep-all;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .preview-info-rule{height:1px;background:#414146;width:100%}
+    .preview-info-detail{display:grid;grid-template-columns:52px minmax(0,1fr);column-gap:8px;row-gap:6px;font:9px/1.45 var(--mono);align-items:start}
+    .preview-info-detail dt{color:#7d7d81}
+    .preview-info-detail dd{margin:0;color:#e4e1da;min-width:0;overflow-wrap:anywhere}
+    .preview-info-footer{display:flex;justify-content:space-between;align-items:center;gap:7px}
+    .preview-open-btn{display:inline-flex;align-items:center;gap:11px;padding:8px 9px;border:1px solid #dedbd4;font:10px/1.3 var(--mono);letter-spacing:.06em;color:#f4f1ee;white-space:nowrap;transition:background .2s,border-color .2s}
+    .preview-surface-split:hover .preview-open-btn{background:var(--tone);border-color:var(--tone);color:#111}
+    .preview-open-note{font:9px/1.4 var(--mono);color:#89888a;text-align:right}
+    .window-primary.is-maxed .preview-cover{width:min(100%,350px)}
+    .window-primary.is-maxed .preview-info-side{padding:clamp(18px,3vw,46px)}
+    .window-primary.is-maxed .preview-info-title{font-size:clamp(30px,5vw,65px)}
+    .window-primary.is-maxed .preview-info-copy{font-size:clamp(13px,1.6vw,23px);-webkit-line-clamp:4}
+    .window-primary.is-maxed .preview-info-detail{font-size:clamp(10px,1.2vw,17px);grid-template-columns:80px minmax(0,1fr)}
+    @media(max-width:980px){
+      .preview-poster-side{padding:10px 11px}.preview-cover{width:min(100%,149px)}
+      .preview-info-side{padding:12px 13px}.preview-info-title{font-size:clamp(20px,2.6vw,28px)}
+      .preview-info-top{gap:8px}.preview-info-copy{font-size:10px}
+      .preview-info-detail{row-gap:4px;font-size:9px}
+      .preview-open-note{display:none}
+    }
+    @media(max-width:760px){
+      .preview-surface-split{grid-template-columns:39% 61%}
+      .preview-poster-side{padding:9px 9px}.preview-cover{width:min(100%,140px)}
+      .preview-info-side{padding:9px 11px;gap:5px}.preview-info-top{gap:7px}
+      .preview-info-title{font-size:clamp(17px,4.5vw,24px)}.preview-info-en{font-size:9px}
+      .preview-info-copy{font-size:10px;line-height:1.45}
+      .preview-info-detail{display:none}.preview-info-rule{display:none}
+      .preview-open-btn{font-size:9px;padding:7px 9px}
+    }
+    @media(max-width:480px){
+      .preview-surface-split{grid-template-columns:40% 60%}
+      .preview-poster-side{padding:7px}.preview-cover{width:100%;max-width:118px}
+      .preview-info-side{padding:8px 9px}.preview-info-top{gap:6px}
+      .preview-info-kicker{font-size:8px}.preview-info-kicker span:last-child{display:none}
+      .preview-info-title{font-size:clamp(17px,4.3vw,21px)}
+      .preview-info-en{font-size:8px;margin-top:3px}
+      .preview-info-copy{font-size:9px;-webkit-line-clamp:2}
+      .preview-open-btn{font-size:8px;padding:6px 7px}
+      .preview-cover-empty{gap:8px}.preview-cover-empty .symbol{width:35px;height:35px;font-size:20px}.preview-cover-empty .placeholder-label{font-size:8px}
+    }
+
     /* ===== real-image + CMS additions ===== */
     [hidden]{display:none!important}
     .poster-photo,.portrait-photo,.detail-photo,.preview-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
@@ -853,13 +920,22 @@
     function charCard(c){const art=c.image?`<img class="portrait-photo" src="${esc(c.image)}" alt="" loading="lazy">`:'<div class="portrait-ring"></div><div class="portrait-mass"></div><div class="portrait-center">'+esc(c.mark)+'</div>';return `<a href="#characters/${esc(c.id)}" class="character-tile" style="--accent:${esc(c.accent)}" aria-label="캐릭터 상세: ${esc(c.name)}"><div class="portrait">${art}<div class="portrait-tag"><span>PERSON / ${esc(c.number)}</span><span>⊹</span></div></div><div class="portrait-footer"><div><div class="ko-name">${esc(c.name)}</div><div class="sub">${esc(c.roman)}</div></div><span class="arr">↗</span></div></a>`}
     let featuredIndex=0;
     function renderFeatured(){
-      const featured=shownWorks();if(!featured.length){$('#preview-body').innerHTML='';$('#preview-counter').textContent='NO FILES';return}
+      const featured=shownWorks();
+      if(!featured.length){$('#preview-body').innerHTML='';$('#preview-counter').textContent='NO FILES';return}
       featuredIndex=(featuredIndex+featured.length)%featured.length;
-      const w=featured[featuredIndex];
+      const w=featured[featuredIndex],tone=validTone(w.tone),cover=w.image||'';
       $('#preview-titlebar').textContent=`FILE_${w.number} / ${w.category}.EXE`;
       $('#preview-counter').textContent=`FILE ${String(featuredIndex+1).padStart(2,'0')} / ${String(featured.length).padStart(2,'0')}`;
-      $('#preview-code').textContent=w.code;
-      $('#preview-body').innerHTML=`<a href="#works/${esc(w.id)}" class="preview-surface ${w.image?'has-photo ':''}${w.tone==='gold'?'fantasy':w.tone==='blue'?'mystery':''}" style="display:block" aria-label="${esc(w.title)} 상세 열기">${w.image?`<img class="preview-photo" src="${esc(w.image)}" alt="">`:''}<div class="art-cross"></div><div class="art-orbit"></div><div class="art-core"></div><div class="preview-giant">${esc(w.mark)}</div><div class="preview-caption">[ ${esc(w.number)} // ${esc(w.category)} ]<br>CLICK TO OPEN THE WORLD</div><div class="preview-data">◉ FILE OPEN<br>TYPE / CREATIVE WORK<br>STATUS / INDEXED</div><div class="preview-label">${esc(w.title)}</div></a>`;
+      $('#preview-code').textContent=`archive.open('file_${w.number}');`;
+      $('#preview-body').innerHTML=`<a href="#works/${esc(w.id)}" class="preview-surface-split tone-${tone}" aria-label="${esc(w.title)} 상세 열기">
+        <div class="preview-poster-side"><div class="preview-cover">${cover?`<img class="preview-cover-image" src="${esc(cover)}" alt="${esc(w.title)} 작품 표지" loading="eager">`:''}<div class="preview-cover-empty"><div class="symbol">▧</div><span class="placeholder-label">COVER ART<br>NOT REGISTERED</span></div></div></div>
+        <div class="preview-info-side"><div class="preview-info-top">
+          <div class="preview-info-kicker"><span class="tag">FEATURED FILE</span><span>NO.${esc(w.number)}</span></div>
+          <div><h2 class="preview-info-title">${esc(w.title)}</h2>${w.releaseDate?`<div class="preview-info-en">RELEASE ${esc(w.releaseDate)}</div>`:''}</div>
+          <p class="preview-info-copy">${esc(w.description)}</p><div class="preview-info-rule"></div>
+          <dl class="preview-info-detail"><dt>GENRE</dt><dd>${esc(w.genre)}</dd><dt>STATUS</dt><dd>PUBLIC / INDEXED</dd></dl></div>
+          <div class="preview-info-footer"><span class="preview-open-btn">OPEN FILE ↗</span><span class="preview-open-note">SELECT TO EXPLORE</span></div></div></a>`;
+      const img=$('.preview-cover-image',$('#preview-body'));if(img)img.addEventListener('error',()=>{img.remove()},{once:true});
     }
     function renderHome(){
       $('#featured-work-grid').innerHTML=shownWorks().slice(0,3).map(workCard).join('')||'<div class="no-results">전시 중인 작품이 없습니다.</div>';
