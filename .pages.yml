@@ -160,6 +160,10 @@ content:
           - name: appearance
             label: "외형"
             type: text
+          - name: gallery
+            label: "감정 에셋 / 갤러리 (가로 1216x832, 여러 장 가능)"
+            type: image
+            list: true
   - name: updates
     label: "📢 업데이트 기록"
     type: file
