@@ -977,6 +977,20 @@
       $$('.detail-tab').forEach(btn=>btn.addEventListener('click',()=>{currentDetail.tab=btn.dataset.detailTab;$$('.detail-tab').forEach(b=>{b.classList.toggle('active',b===btn);b.setAttribute('aria-selected',String(b===btn))});renderDetailTab()}));
       renderDetailTab();
     }
+    /* images/gallery/<캐릭터 이름>/ 폴더의 이미지를 자동으로 나열 (GitHub API, 세션 캐시) */
+    async function folderGallery(name){
+      const m=location.hostname.match(/^([^.]+)\.github\.io$/),owner=m?m[1]:'notmetho404',repo=m?(location.pathname.split('/')[1]||''):'archive';
+      if(!repo)return [];
+      const dir='images/gallery/'+name,key='gal:'+dir;
+      try{const hit=sessionStorage.getItem(key);if(hit)return JSON.parse(hit)}catch{}
+      try{
+        const r=await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${dir.split('/').map(encodeURIComponent).join('/')}`);
+        if(!r.ok)return [];
+        const list=(await r.json()).filter(f=>f.type==='file'&&/\.(png|jpe?g|gif|webp|avif)$/i.test(f.name)).sort((a,b)=>a.name.localeCompare(b.name,'ko',{numeric:true})).map(f=>'./'+f.path.split('/').map(encodeURIComponent).join('/'));
+        try{sessionStorage.setItem(key,JSON.stringify(list))}catch{}
+        return list;
+      }catch{return []}
+    }
     function renderDetailTab(){
       const {kind,id,tab}=currentDetail;const w=kind==='works'?workById(id):null;const c=kind==='characters'?charById(id):null;const item=w||c;if(!item)return;
       const root=$('#detail-content');
@@ -988,8 +1002,9 @@
         const related=w?shownChars().filter(x=>x.workId===id):shownWorks().filter(x=>x.id===c.workId);
         root.innerHTML=`<div class="detail-index">[ LINKED RECORDS / 03 ]</div><h2>${w?'CHARACTER INDEX':'APPEARS IN'}</h2>${related.length?`<div class="linked-cards">${related.map(x=>`<a class="linked-card" href="#${w?'characters':'works'}/${esc(x.id)}"><span><strong>${esc(w?x.name:x.title)}</strong><small>${esc(w?x.roman:x.genre)}</small></span><span>↗</span></a>`).join('')}</div>`:'<p>아직 연결된 공개 작품 또는 캐릭터 기록이 없습니다.</p>'}`;
       } else {
-        const g=(c&&c.gallery)||[];
-        root.innerHTML=`<div class="detail-index">[ ASSET GALLERY / 03 ]</div><h2>EMOTION ASSETS</h2>${g.length?`<div class="gallery-grid">${g.map((u,n)=>`<a class="gallery-item" href="${esc(u)}" target="_blank" rel="noopener noreferrer" aria-label="이미지 ${n+1} 크게 보기"><img src="${esc(u)}" alt="${esc(c.name)} ${n+1}" loading="lazy"></a>`).join('')}</div>`:'<p>등록된 이미지가 없습니다.</p>'}`;
+        const draw=g=>{if(currentDetail.kind!==kind||currentDetail.id!==id||currentDetail.tab!=='ASSETS')return;root.innerHTML=`<div class="detail-index">[ ASSET GALLERY / 03 ]</div><h2>EMOTION ASSETS</h2>${g.length?`<div class="gallery-grid">${g.map((u,n)=>`<a class="gallery-item" href="${esc(u)}" target="_blank" rel="noopener noreferrer" aria-label="이미지 ${n+1} 크게 보기"><img src="${esc(u)}" alt="${esc(c.name)} ${n+1}" loading="lazy"></a>`).join('')}</div>`:'<p>등록된 이미지가 없습니다.</p>'}`};
+        root.innerHTML='<div class="detail-index">[ ASSET GALLERY / 03 ]</div><h2>EMOTION ASSETS</h2><p>불러오는 중…</p>';
+        folderGallery(c.name).then(f=>draw([...new Set([...(c.gallery||[]),...f])]));
       }
     }
     function drawFilters(){
