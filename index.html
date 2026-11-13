@@ -1068,7 +1068,7 @@
       $$('#update-filters button').forEach(btn=>btn.addEventListener('click',()=>{updateFilter=btn.dataset.updateFilter;renderUpdates()}));
     }
     async function loadPublishedData(){
-      const get=async n=>{try{const r=await fetch('./data/'+n+'.json',{cache:'no-store'});return r.ok?await r.json():null}catch{return null}};
+      const get=async n=>{try{const r=await fetch('./data/'+n+'.json?t='+Date.now(),{cache:'no-store'});return r.ok?await r.json():null}catch{return null}};
       const [works,characters,updates,profile,roadmap,gallery]=await Promise.all(['works','characters','updates','profile','roadmap','gallery'].map(get));
       if(!listOf(works)){$('#featured-work-grid').innerHTML='<div class="no-results">데이터를 불러오지 못했습니다.</div>';return}
       data=adapt({works,characters,updates,profile,roadmap,gallery});
