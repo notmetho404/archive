@@ -161,7 +161,7 @@ content:
             label: "외형"
             type: text
           - name: gallery
-            label: "감정 에셋 (선택) — 여러 장은 images/gallery/캐릭터이름/ 폴더에 한꺼번에 올리면 자동 표시"
+            label: "감정 에셋 (선택) — 여러 장은 images/캐릭터이름/ 폴더에 한꺼번에 올리면 자동 표시"
             type: image
             list: true
   - name: updates
