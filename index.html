@@ -1010,7 +1010,7 @@
       } else {
         const draw=g=>{if(currentDetail.kind!==kind||currentDetail.id!==id||currentDetail.tab!=='ASSETS')return;root.innerHTML=`<div class="detail-index">[ ASSET GALLERY / 03 ]</div><h2>EMOTION ASSETS</h2>${g.length?`<div class="gallery-grid">${g.map((u,n)=>`<a class="gallery-item" href="${esc(u)}" target="_blank" rel="noopener noreferrer" aria-label="이미지 ${n+1} 크게 보기"><img src="${esc(u)}" alt="${esc(c.name)} ${n+1}" loading="lazy"></a>`).join('')}</div>`:'<p>등록된 이미지가 없습니다.</p>'}`};
         root.innerHTML='<div class="detail-index">[ ASSET GALLERY / 03 ]</div><h2>EMOTION ASSETS</h2><p>불러오는 중…</p>';
-        folderGallery(c.name).then(f=>draw([...new Set([...(c.gallery||[]),...f])]));
+        folderGallery(c.name).then(f=>{const k=u=>{try{u=decodeURIComponent(u)}catch{}return u.replace(/^.*?images\//,'images/')},seen=new Set(),out=[];for(const u of [...(c.gallery||[]),...f]){const x=k(u);if(!seen.has(x)){seen.add(x);out.push(u)}}draw(out)});
       }
     }
     function drawFilters(){
