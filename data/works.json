@@ -7,6 +7,8 @@
         "현대판타지",
         "근미래"
       ],
+      "category": "딥홀, 인외, 고수",
+      "description": "[🍆섹가포럼] 색욕이랑 1박 2일 가능? (진지)",
       "releaseDate": "2026.11.11",
       "platforms": [
         {
@@ -40,7 +42,7 @@
           "url": "https://share.crack.wrtn.ai/4i4nn25"
         },
         {
-          "name": "크랙ˢᵃᶠᵉ",
+          "name": "크랙 Safe",
           "url": "https://share.crack.wrtn.ai/nbn3siv"
         }
       ]
@@ -64,7 +66,8 @@
           "url": "https://share.crack.wrtn.ai/b0v0chq"
         }
       ],
-      "homepage": "https://falsehalo.naru.pub/"
+      "homepage": "https://falsehalo.naru.pub/",
+      "homepageLabel": "FALSE HALO"
     },
     {
       "title": "피트 월 : NORTHSTAR",
@@ -89,11 +92,12 @@
     },
     {
       "title": "11월에는 신광재를 조심하세요",
-      "image": "/archive/images/01.png",
+      "image": "/archive/images/file-2.gif",
       "genre": [
         "현대",
         "느와르"
       ],
+      "category": "청림건설, 패국",
       "description": "건설사 실장이라더니, 하는 일이 영 수상하다.",
       "releaseDate": "2026.09.12",
       "platforms": [
@@ -106,7 +110,8 @@
           "url": "https://share.crack.wrtn.ai/1j96jz"
         }
       ],
-      "homepage": "https://gwangbros.naru.pub/"
+      "homepage": "https://gwangbros.naru.pub/",
+      "homepageLabel": "GWANGBROS"
     }
   ]
 }
