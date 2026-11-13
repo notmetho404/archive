@@ -161,7 +161,7 @@ content:
             label: "외형"
             type: text
   - name: gallery
-    label: "🖼 캐릭터 미디어 (감정 에셋)"
+    label: "🖼 캐릭터 미디어"
     type: file
     path: data/gallery.json
     format: json
