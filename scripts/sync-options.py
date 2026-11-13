@@ -3,7 +3,8 @@
 
 - 캐릭터의 '소속 작품' 선택지  <- data/works.json 의 작품 제목
 - 작품의 '장르' 선택지         <- data/genres.json 의 장르 목록 (+ 작품에 이미 쓰인 장르)
-.pages.yml 안의 `# sync:works` / `# sync:genres` 표시 사이만 다시 씁니다.
+- 캐릭터 미디어의 '캐릭터' 선택지 <- data/characters.json 의 캐릭터 이름
+.pages.yml 안의 `# sync:works` / `# sync:genres` / `# sync:characters` 표시 사이만 다시 씁니다.
 """
 import json, re, sys
 from pathlib import Path
@@ -24,6 +25,7 @@ def uniq(seq):
 
 works = items("data/works.json")
 titles = uniq(w.get("title", "") for w in works)
+names = uniq(c.get("title", "") for c in items("data/characters.json"))
 genres = uniq(g.get("name", "") for g in items("data/genres.json"))
 used = []
 for w in works:
@@ -52,8 +54,9 @@ def replace(text, key, values):
 
 new = replace(text, "works", titles)
 new = replace(new, "genres", genres)
+new = replace(new, "characters", names)
 if new != text:
     path.write_text(new, encoding="utf-8")
-    print("updated .pages.yml:", len(titles), "works,", len(genres), "genres")
+    print("updated .pages.yml:", len(titles), "works,", len(genres), "genres,", len(names), "characters")
 else:
     print("no change")

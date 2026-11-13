@@ -1,12 +1,13 @@
 name: 편집기 드롭다운 자동 갱신
 
-# 작품/장르 목록이 바뀌면 편집기(.pages.yml)의 드롭다운 선택지를 자동으로 맞춥니다.
+# 작품/장르/캐릭터 목록이 바뀌면 편집기(.pages.yml)의 드롭다운 선택지를 자동으로 맞춥니다.
 on:
   push:
     branches: [main]
     paths:
       - data/works.json
       - data/genres.json
+      - data/characters.json
       - scripts/sync-options.py
   workflow_dispatch:
 

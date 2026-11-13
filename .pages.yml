@@ -160,8 +160,62 @@ content:
           - name: appearance
             label: "외형"
             type: text
-          - name: gallery
-            label: "감정 에셋 순서 (선택) — 폴더에 올린 이미지를 보여줄 순서대로 고르세요. 안 고른 이미지는 그 뒤에 이름순으로 나와요"
+  - name: gallery
+    label: "🖼 캐릭터 미디어 (감정 에셋)"
+    type: file
+    path: data/gallery.json
+    format: json
+    fields:
+      - name: items
+        label: "캐릭터별 이미지 (캐릭터를 고르고 이미지를 추가하세요. 맨 위 이미지가 갤러리에 가장 먼저 나와요)"
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: "캐릭터"
+            type: select
+            required: true
+            options:
+              values:
+                # sync:characters (자동 생성 — 직접 고치지 마세요)
+                - value: "서 건"
+                  label: "서 건"
+                - value: "아우렌"
+                  label: "아우렌"
+                - value: "호커스"
+                  label: "호커스"
+                - value: "아틀라스"
+                  label: "아틀라스"
+                - value: "알케미"
+                  label: "알케미"
+                - value: "아르카디아"
+                  label: "아르카디아"
+                - value: "루인"
+                  label: "루인"
+                - value: "레조낭스"
+                  label: "레조낭스"
+                - value: "데리브"
+                  label: "데리브"
+                - value: "에레보스"
+                  label: "에레보스"
+                - value: "엘리아스 뉘스트룀"
+                  label: "엘리아스 뉘스트룀"
+                - value: "요나스 켈러"
+                  label: "요나스 켈러"
+                - value: "레오 마르샹"
+                  label: "레오 마르샹"
+                - value: "핀 오코너"
+                  label: "핀 오코너"
+                - value: "다비데 콘티"
+                  label: "다비데 콘티"
+                - value: "신광재"
+                  label: "신광재"
+                # end sync:characters
+          - name: images
+            label: "이미지 (가로 1216x832) — 폴더째 올린 이미지는 자동으로 나오고, 여기엔 순서를 정하고 싶은 것만 추가해도 돼요"
             type: image
             list: true
   - name: updates
