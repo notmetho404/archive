@@ -981,15 +981,21 @@
     async function folderGallery(name){
       const m=location.hostname.match(/^([^.]+)\.github\.io$/),owner=m?m[1]:'notmetho404',repo=m?(location.pathname.split('/')[1]||''):'archive';
       if(!repo)return [];
-      const dir='images/gallery/'+name,key='gal:'+dir;
-      try{const hit=sessionStorage.getItem(key);if(hit)return JSON.parse(hit)}catch{}
-      try{
-        const r=await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${dir.split('/').map(encodeURIComponent).join('/')}`);
-        if(!r.ok)return [];
-        const list=(await r.json()).filter(f=>f.type==='file'&&/\.(png|jpe?g|gif|webp|avif)$/i.test(f.name)).sort((a,b)=>a.name.localeCompare(b.name,'ko',{numeric:true})).map(f=>'./'+f.path.split('/').map(encodeURIComponent).join('/'));
-        try{sessionStorage.setItem(key,JSON.stringify(list))}catch{}
-        return list;
-      }catch{return []}
+      const one=async dir=>{
+        const key='gal:'+dir;
+        try{const hit=sessionStorage.getItem(key);if(hit)return JSON.parse(hit)}catch{}
+        try{
+          const r=await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${dir.split('/').map(encodeURIComponent).join('/')}`);
+          if(!r.ok)return [];
+          const list=(await r.json()).filter(f=>f.type==='file'&&/\.(png|jpe?g|gif|webp|avif)$/i.test(f.name)).sort((a,b)=>a.name.localeCompare(b.name,'ko',{numeric:true})).map(f=>'./'+f.path.split('/').map(encodeURIComponent).join('/'));
+          try{sessionStorage.setItem(key,JSON.stringify(list))}catch{}
+          return list;
+        }catch{return []}
+      };
+      /* images/<이름>/ 과 images/gallery/<이름>/ 둘 다 읽는다 */
+      const names=[...new Set([name,name.replace(/\s+/g,'')])].filter(Boolean);
+      const res=await Promise.all(names.flatMap(n=>[one('images/'+n),one('images/gallery/'+n)]));
+      return [...new Set(res.flat())];
     }
     function renderDetailTab(){
       const {kind,id,tab}=currentDetail;const w=kind==='works'?workById(id):null;const c=kind==='characters'?charById(id):null;const item=w||c;if(!item)return;
