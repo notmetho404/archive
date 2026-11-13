@@ -922,7 +922,8 @@
     function charCard(c){const art=c.image?`<img class="portrait-photo" src="${esc(c.image)}" alt="" loading="lazy">`:'<div class="portrait-ring"></div><div class="portrait-mass"></div><div class="portrait-center">'+esc(c.mark)+'</div>';return `<a href="#characters/${esc(c.id)}" class="character-tile" style="--accent:${esc(c.accent)}" aria-label="캐릭터 상세: ${esc(c.name)}"><div class="portrait">${art}<div class="portrait-tag"><span>PERSON / ${esc(c.number)}</span><span>⊹</span></div></div><div class="portrait-footer"><div><div class="ko-name">${esc(c.name)}</div><div class="sub">${esc(c.roman)}</div></div><span class="arr">↗</span></div></a>`}
     let featuredIndex=0;
     function renderFeatured(){
-      const featured=shownWorks();
+      const dk=w=>(String(w.releaseDate||'').match(/\d+/g)||[]).map(n=>n.padStart(4,'0')).join('');
+      const featured=shownWorks().map((w,i)=>[w,i]).sort((a,b)=>dk(b[0]).localeCompare(dk(a[0]))||a[1]-b[1]).slice(0,3).map(x=>x[0]);
       if(!featured.length){$('#preview-body').innerHTML='';$('#preview-counter').textContent='NO FILES';return}
       featuredIndex=(featuredIndex+featured.length)%featured.length;
       const w=featured[featuredIndex],tone=validTone(w.tone),cover=w.image||'';
