@@ -123,7 +123,7 @@
     .section-heading .section-next{display:inline-block;margin-top:14px;border:1px solid #777;padding:10px 15px;font:11px var(--mono);color:#fff}
     .section-heading .section-next:hover{background:var(--red);border-color:var(--red);color:#111}
     .work-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
-    .work-card{min-width:0;cursor:pointer;position:relative}
+    .work-card{min-width:0;cursor:pointer;position:relative;display:flex;flex-direction:column}
     .poster{aspect-ratio:832/1216;border:1px solid #69696b;position:relative;background:#19191b;overflow:hidden;isolation:isolate;transition:border-color .2s}
     .work-card:hover .poster{border-color:var(--paper)}
     .poster:after{position:absolute;content:'';inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 3px,#0004 4px);z-index:10;opacity:.35}
@@ -142,7 +142,7 @@
     .poster-title{position:absolute;left:17px;bottom:17px;z-index:18;right:20px;font-weight:900;line-height:.92;letter-spacing:-.065em;font-size:clamp(30px,3.7vw,61px);text-shadow:0 3px 18px #0008;word-break:normal;overflow-wrap:anywhere}
     .poster-title.ko{font-family:var(--ko);letter-spacing:-.075em;line-height:1.13;font-size:clamp(28px,2.65vw,45px)}
     .poster-stamp{position:absolute;right:18px;top:46%;border:1px solid #ffffff85;padding:6px 8px;z-index:9;font:10px var(--mono);transform:rotate(90deg);transform-origin:right}
-    .card-bottom{padding:16px 0 11px;display:flex;justify-content:space-between;gap:8px;align-items:start;border-bottom:1px solid #4c4c4e;transition:border-color .25s}
+    .card-bottom{flex:1;padding:16px 0 11px;display:flex;justify-content:space-between;gap:8px;align-items:start;border-bottom:1px solid #4c4c4e;transition:border-color .25s}
     .work-card:hover .card-bottom{border-color:var(--red)}
     .card-bottom .record-num{color:var(--red);font:11px var(--mono);margin-bottom:8px}
     .card-bottom h3{margin:0 0 6px;font:700 17px/1.45 var(--ko);letter-spacing:-.05em;word-break:keep-all}
@@ -884,7 +884,7 @@
         <div class="up-headline"><div><div class="smallcap text-red">[ 01 / HISTORICAL ACTIVITY ]</div><h2>CHANGE<span style="color:var(--red)">LOG.</span></h2></div><p>NEWEST FIRST<br>DATABASE / HISTORY.DAT</p></div>
         <div class="update-filters" id="update-filters"><button type="button" class="filter-btn selected" data-update-filter="ALL">ALL ENTRIES</button></div>
         <div id="change-feed" class="change-feed" aria-live="polite"></div>
-        <section class="roadmap-section" id="roadmap-section" hidden><div class="up-headline"><div><div class="smallcap text-red">[ 02 / UPCOMING OPERATIONS ]</div><h2>ROAD<span style="-webkit-text-stroke:1px #eee;color:transparent">MAP.</span></h2></div><p>NO FIXED RELEASE DATE<br>PLANS MAY CHANGE</p></div><p class="roadmap-intro">지금 만들고 있는 기능, 다음에 추가할 기능, 언젠가 실험해볼 아이디어. 확정된 마감일 대신 작업 단계별로 정리했습니다.</p><div class="roadmap-board" id="roadmap-board"></div><div class="roadmap-foot">※ 표시된 진행 상태는 시안용 예시입니다. 실제 운영 시 수동으로 업데이트할 수 있습니다.</div></section>
+        <section class="roadmap-section" id="roadmap-section" hidden><div class="up-headline"><div><div class="smallcap text-red">[ 02 / UPCOMING OPERATIONS ]</div><h2>ROAD<span style="-webkit-text-stroke:1px #eee;color:transparent">MAP.</span></h2></div><p>NO FIXED RELEASE DATE<br>PLANS MAY CHANGE</p></div><p class="roadmap-intro">지금 만들고 있는 기능, 다음에 추가할 기능, 언젠가 실험해볼 아이디어. 확정된 마감일 대신 작업 단계별로 정리했습니다.</p><div class="roadmap-board" id="roadmap-board"></div><div class="roadmap-foot">※ 예정된 계획이며 진행 상황에 따라 바뀔 수 있습니다.</div></section>
       </section>
     </main>
 
