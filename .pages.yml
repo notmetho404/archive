@@ -260,6 +260,38 @@ content:
           - name: image
             label: "이미지 (선택)"
             type: image
+  - name: roadmap
+    label: "🗓 예정 계획"
+    type: file
+    path: data/roadmap.json
+    format: json
+    fields:
+      - name: items
+        label: "예정 계획 목록 (업데이트 기록 페이지 아래 ROADMAP에 표시)"
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: "계획 제목"
+            type: string
+            required: true
+          - name: status
+            label: "진행 단계"
+            type: select
+            options:
+              values:
+                - value: "IN PROGRESS"
+                  label: "작업 중 (NOW)"
+                - value: "NEXT"
+                  label: "다음 예정 (NEXT UP)"
+                - value: "LATER"
+                  label: "언젠가 (BACKLOG)"
+          - name: description
+            label: "내용"
+            type: text
   - name: profile
     label: "💌 프로필"
     type: file
