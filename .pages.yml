@@ -131,6 +131,8 @@ content:
             options:
               values:
                 # sync:works (자동 생성 — 직접 고치지 마세요)
+                - value: "가이딩 됐고, 같이 잘래?"
+                  label: "가이딩 됐고, 같이 잘래?"
                 - value: "건전한 색욕 생활"
                   label: "건전한 색욕 생활"
                 - value: "용사님, 토벌은 다음에!"
