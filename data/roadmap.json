@@ -1,11 +1,6 @@
 {
   "items": [
     {
-      "title": "가이딩은 됐고, 같이 잘래?",
-      "status": "IN PROGRESS",
-      "description": "경계원 칠죄종 시리즈 ― 나태 ~ 에셋 작업중 ~"
-    },
-    {
       "title": "인외 우주행성 불시착",
       "status": "LATER"
     },
@@ -20,6 +15,10 @@
     },
     {
       "title": "지하 리그 능력물",
+      "status": "LATER"
+    },
+    {
+      "title": "미국 럭비 하이틴물",
       "status": "LATER"
     }
   ]
