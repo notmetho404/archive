@@ -183,6 +183,8 @@ content:
             options:
               values:
                 # sync:characters (자동 생성 — 직접 고치지 마세요)
+                - value: "백승하"
+                  label: "백승하"
                 - value: "서 건"
                   label: "서 건"
                 - value: "아우렌"
