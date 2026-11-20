@@ -1,13 +1,36 @@
 {
   "items": [
     {
+      "title": "가이딩 됐고, 같이 잘래?",
+      "image": "/archive/images/file-3.gif",
+      "genre": [
+        "현대판타지",
+        "근미래"
+      ],
+      "category": "딥홀, 인외, 고수위",
+      "description": "[🍆섹가포럼] 나태가 나만 보면 일어남 이거 호감임?",
+      "releaseDate": "2026.11.19",
+      "platforms": [
+        {
+          "name": "플레이툰",
+          "url": "https://www.plaitoon.com/ko/share/character/98c8743d-e207-4cc6-b48c-7c9a37813352"
+        },
+        {
+          "name": "크랙",
+          "url": "https://share.crack.wrtn.ai/haqsuhb"
+        }
+      ],
+      "homepage": "https://deephole-noexit.naru.pub/",
+      "homepageLabel": "DEEPHOLE : NO EXIT"
+    },
+    {
       "title": "건전한 색욕 생활",
       "image": "/archive/images/file-1.gif",
       "genre": [
         "현대판타지",
         "근미래"
       ],
-      "category": "딥홀, 인외, 고수",
+      "category": "딥홀, 인외, 고수위",
       "description": "[🍆섹가포럼] 색욕이랑 1박 2일 가능? (진지)",
       "releaseDate": "2026.11.11",
       "platforms": [
